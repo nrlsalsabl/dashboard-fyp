@@ -217,6 +217,33 @@
                         {{-- INFORMASI LAINNYA --}}
                         <h1 class="text-xl font-semibold dark:text-white">Lain Lain</h1>
                         <div class="col-span-6">
+                            <label for="rate_event" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PIC</label>
+                            <div class="relative" id="search_pic">
+                                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                    </svg>
+                                </div>
+                                <input type="search" @if(old('staff_id') == 'input_manual') disabled @endif name="staff_id_display" value="{{ old('staff_id_display') }}" id="staff_id" class="block w-full ps-10 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Cari PIC..." />
+                                <div id="dropdown" class="absolute z-50 overflow-hidden w-full bg-white border border-gray-300 rounded-lg shadow-lg dark:bg-gray-700 dark:border-gray-600 mt-1 hidden">
+                                </div>
+                                {{-- isinya bisa staff_id atau 'input_manual' --}}
+                                <input type="hidden" name="staff_id" value="{{ old('staff_id') }}">
+                                @error('staff_id')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                                @enderror
+                                
+                                {{-- Spinner --}}
+                                <div id="spinner" class="absolute right-10 top-4 hidden">
+                                    <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291l-3.707 3.707c-4.019-4.02-4.019-10.537 0-14.556L6 7.291a8.003 8.003 0 010 10.582z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-span-6">
                             <label for="rate_event" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Talent Exclusive</label>
                             <select class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="talent_exclusive">
                                 <option selected value="{{ $talent->talent_exclusive }}">

@@ -185,7 +185,7 @@
                                         </div>
                                     @endif
                                 </td>
-                                <td class="p-4 text-base font-bold text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->staff->name }}</td>
+                                <td class="p-4 text-base font-bold text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->staff?->name }}</td>
                                 <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->account_name }}</td>
                                 <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->account_number }}</td>
                                 <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->bank_name }}</td>
