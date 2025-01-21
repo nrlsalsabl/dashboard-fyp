@@ -21,17 +21,24 @@ class Spending extends Model
         $query->when($filters['search'] ?? false, function ($query, $search) {
             $query->where('name', 'like', '%' . $search . '%');
         });
-    
+
         $query->when($filters['bulan'] ?? false, function ($query, $bulan) {
             $query->whereMonth('date', $bulan);
         });
-    
+
+        $query->when($filters['bulanSpending'] ?? false, function ($query, $bulan) {
+            $query->whereMonth('date', $bulan);
+        });
+
         $query->when($filters['tahun'] ?? false, function ($query, $tahun) {
             $query->whereYear('date', $tahun);
         });
+        $query->when($filters['tahunSpending'] ?? false, function ($query, $tahun) {
+            $query->whereYear('date', $tahun);
+        });
 
-        $query->when($filters['status'] ?? false, function ($query, $status){
-            $query->where('spendings.status', $status);   
+        $query->when($filters['status'] ?? false, function ($query, $status) {
+            $query->where('spendings.status', $status);
         });
     }
 }
