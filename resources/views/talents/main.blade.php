@@ -392,14 +392,18 @@
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->phone }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->place }}, {{ \Carbon\Carbon::parse($talent->date)->format('d F Y') }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->village?->province?->name }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->village?->province?->name ?? $talent->domicile }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    @foreach ($talent->categories as $index => $category)
-                                        @if ($index > 0)
-                                            ,
-                                        @endif
-                                        {{ $category->name }}
-                                    @endforeach
+                                    @if ($talent->categories->isNotEmpty())
+                                        @foreach ($talent->categories as $index => $category)
+                                            @if ($index > 0)
+                                                , 
+                                            @endif
+                                            {{ $category->name }}
+                                        @endforeach
+                                    @else
+                                        {{ $talent->category }}
+                                    @endif
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->engagement }}</td>
                                 <td class="flex items-center gap-2 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -447,7 +451,7 @@
                                         </div>
                                     @endif
                                 </td>
-                                <td class="p-4 text-base font-bold text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->staff?->name }}</td>
+                                <td class="p-4 text-base font-bold text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->staff?->name ?? $talent->pic }}</td>
                                 <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->account_name }}</td>
                                 <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->account_number }}</td>
                                 <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->bank_name }}</td>
@@ -676,6 +680,82 @@
                     },
                 });
             }
+
+            // Script untuk mencari PIC
+            let debounceTimer;
+            // picName ini state untuk klik dari hasil search saja, bukan manual
+            let picName = '{{ old("staff_id_display") ? old("staff_id_display") : ""}}';
+
+            function debounce(func, delay) {
+                return function() {
+                    const context = this;
+                    const args = arguments;
+                    clearTimeout(debounceTimer);
+                    debounceTimer = setTimeout(() => func.apply(context, args), delay);
+                };
+            }
+
+            function performSearch(query) {
+                if (query.length >= 1) {  // Perform search only if the input length is greater than and equal 2 characters
+                    $('#spinner').removeClass('hidden');
+                    $.ajax({
+                        url: '/getStaffs?name=' + query,  // Replace with your search endpoint
+                        method: 'GET',
+                        success: function(data) {
+                            $('#spinner').addClass('hidden');
+                            var dropdown = $('#dropdown');
+                            dropdown.empty().removeClass('hidden').show();  // Clear previous results and show the dropdown
+
+                            // If data empty
+                            if (data.length == 0) {
+                                dropdown.append(`<div class="px-4 py-2 text-sm text-gray-900 dark:text-white italic">PIC "${query}" tidak ada.</div>`);
+                                return;
+                            }
+
+                            // Assuming 'data' is an array of search results
+                            data.forEach(function(item) {
+                                dropdown.append('<div class="dropdown-item cursor-pointer px-4 py-2 text-sm text-gray-900 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-600" data-value="' + item.id + '" data-name="' + item.name + '">' + item.name + '</div>');
+                            });
+
+                            $('.dropdown-item').on('click', function() {
+                                var value = $(this).data('value');
+                                var name = $(this).data('name');
+                                picName = name;
+                                $('#staff_id').val(name);
+                                $('input[name="staff_id"]').val(value);
+                                dropdown.hide();  // Hide the dropdown after selecting an item
+                            });
+                        },
+                        error: function() {
+                            $('#spinner').addClass('hidden');
+                        }
+                    });
+                } else {
+                    $('#dropdown').hide();
+                    $('#spinner').addClass('hidden');
+                }
+            }
+
+            const debouncedSearch = debounce(performSearch, 300);
+
+            $('#staff_id').on('input', function() {
+                var query = $(this).val();
+                debouncedSearch(query);                
+            });
+
+            $(document).on('click', function(event) {
+                if (!$(event.target).closest('.relative').length) {
+                    let currentPicName = $('#staff_id').val();
+                    if (currentPicName == '') {
+                        $('#staff_id').val('');
+                        $('input[name="staff_id"]').val('');
+                        picName = '';
+                    } else {
+                        $('#staff_id').val(picName);
+                    }
+                    $('#dropdown').hide();  // Hide the dropdown if clicking outside of it
+                }
+            });
         });
     </script>
 @endpush

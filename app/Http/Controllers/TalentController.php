@@ -78,6 +78,7 @@ class TalentController extends Controller
             'rate_yt' => 'required',
             'rate_event' => 'required',
             'talent_exclusive' => 'required',
+            'staff_id' => 'required',
             'shopee_affiliate' => 'required',
             'tiktok_affiliate' => 'required',
             'mcn_tiktok' => 'required', 
