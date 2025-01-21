@@ -25,7 +25,7 @@
                     <div class="text-2xl font-semibold mb-1">Info Lebih Lanjut, Silahkan Hubungi Kami</div>
                     <div class="text-sm font-medium text-gray-400 flex flex-col gap-3">
                         <a href="https://www.instagram.com/fypmedia.id">@fypmedia.id </a>
-                        <a href="https://wa.me/+6285175125712">085175125712 (Amira)</a>
+                        <a href="https://wa.me/+6285183230174">085183230174 (Angel)</a>
                         <a href="https://wa.me/+6285175123014">085175123014 (Jaya)</a>
                     </div>
                 </div>
