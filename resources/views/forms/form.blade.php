@@ -53,7 +53,7 @@
 
                     </div>
                     <div>
-                        <a href="https://wa.me/+6285175125712" target="_blank" class="text-sm">085175125712 (Amira)</a>
+                        <a href="https://wa.me/+6285183230174" target="_blank" class="text-sm">085183230174 (Angel)</a>
 
                     </div>
                     <div>
@@ -84,7 +84,7 @@
 
                 </div>
                 <div>
-                    <a href="https://wa.me/+6285175125712" target="_blank" class="text-sm">085175125712 (Amira)</a>
+                    <a href="https://wa.me/+6285183230174" target="_blank" class="text-sm">085183230174 (Angel)</a>
 
                 </div>
                 <div>
