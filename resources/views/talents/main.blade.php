@@ -438,7 +438,7 @@
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ 'Rp' . (floor($talent->rate_event) == $talent->rate_event ? number_format($talent->rate_event, 0, ',', '.') : number_format($talent->rate_event, 2, ',', '.')) }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @if($talent->talent_exclusive == 1)
-                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
+                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800"> 
                                             <h2 class="text-sm font-normal">Ya</h2>
                                         </div>
                                     @elseif($talent->talent_exclusive == 0)
