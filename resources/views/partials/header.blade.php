@@ -385,7 +385,6 @@
                                 'kinerja-staff',
                                 'earnings',
                                 'spendings',
-                                'position',
                                 'categories',
                                 'scope',
                                 'project'))
