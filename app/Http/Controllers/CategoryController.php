@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\CategoryImport;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryController extends Controller
 {
@@ -42,7 +44,7 @@ class CategoryController extends Controller
         if (Category::where('name', $validatedData['name'])->exists()) {
             return redirect('/categories')->with('error', 'Kategori sudah ada');
         }
-        
+
         Category::create($validatedData);
 
         return redirect('/categories')->with('success', 'Data has been added!');
@@ -90,5 +92,18 @@ class CategoryController extends Controller
         Category::destroy($id);
 
         return redirect('/category')->with('success', 'Data has been deleted!');
+    }
+
+    public function import(Request $request)
+    {
+
+        $validatedData = $request->file('file');
+
+        $fileName = $validatedData->getClientOriginalName();
+        $validatedData->move('CategoryData', $fileName);
+
+        Excel::import(new CategoryImport, public_path('/CategoryData/' . $fileName));
+
+        return redirect('/categories')->with('success', 'Data has been added!');
     }
 }

@@ -50,6 +50,7 @@ Route::middleware(['role_or_permission:master', 'prevent-back'])->group(function
     Route::post('/intern-import', [InternController::class, 'import']);
     Route::post('/brand-import', [BrandController::class, 'import']);
     Route::post('/position-import', [PositionController::class, 'import']);
+    Route::post('category-import', [CategoryController::class, 'import']);
     Route::post('/agency-import', [AgencyController::class, 'import']);
     Route::get('/exportIntern', [InternController::class, 'export']);
     Route::get('/exportStaff', [StaffController::class, 'export']);
