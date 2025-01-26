@@ -85,4 +85,6 @@
 {{ $tables->links('partials.paginate') }}
 
 @include('position.create')
+
+@include('position.import')
 @endsection
