@@ -62,7 +62,7 @@
                                     <!-- Edit User Modal -->
                                     @include('category.edit')
                                     @can('delete data')
-                                        <form action="/categories/{{ $category->id }}" method="POST" class="inline-flex">
+                                        <form action="/category/{{ $category->id }}" method="POST" class="inline-flex">
                                             @method('delete')
                                             @csrf
                                             <!-- Delete User Modal -->
@@ -85,4 +85,6 @@
 {{ $tables->links('partials.paginate') }}
 
 @include('category.create')
+
+@include('category.import')
 @endsection

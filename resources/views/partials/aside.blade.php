@@ -37,14 +37,14 @@
                     </svg>
                 </button>
                 <ul id="dropdown-example"
-                    class=" {{ Request::is('talent*') || Request::is('staff*') || Request::is('intern*') || Request::is('brand*') || Request::is('agency*') || Request::is('categories*') || Request::is('position*') || Request::is('scope*') || Request::is('project*') ? '' : 'hidden' }} py-2 space-y-2">
+                    class=" {{ Request::is('talent*') || Request::is('staff*') || Request::is('intern*') || Request::is('brand*') || Request::is('agency*') || Request::is('category*') || Request::is('position*') || Request::is('scope*') || Request::is('project*') ? '' : 'hidden' }} py-2 space-y-2">
                     <li>
                         <a href="/position"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('position') ? 'bg-gray-200' : '' }}">Posisi</a>
                     </li>
                     <li>
-                        <a href="/categories"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('categories') ? 'bg-gray-200' : '' }}">Kategori</a>
+                        <a href="/category"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('category') ? 'bg-gray-200' : '' }}">Kategori</a>
                     </li>
                     <li>
                         <a href="/talent"

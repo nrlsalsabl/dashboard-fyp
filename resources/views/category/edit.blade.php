@@ -18,7 +18,7 @@
             </div>
             <!-- Modal body -->
             <div class="p-6 space-y-6">
-                <form action="/categories/{{ $category->id }}" method="POST" enctype="multipart/form-data">
+                <form action="/category/{{ $category->id }}" method="POST" enctype="multipart/form-data">
                     @method("PUT")
                     @csrf
                     <div class="grid grid-cols-6 gap-6">
