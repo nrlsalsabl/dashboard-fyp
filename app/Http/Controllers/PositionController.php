@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePositionRequest;
-use App\Http\Requests\UpdatePositionRequest;
+use App\Exports\PositionExport;
 use App\Models\Position;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Requests\StorePositionRequest;
+use App\Http\Requests\UpdatePositionRequest;
+use App\Imports\PositionImport;
 
 class PositionController extends Controller
 {
@@ -19,7 +22,7 @@ class PositionController extends Controller
             'title' => 'Posisi',
             'search' => 'position',
             'tables' => $tables,
-            'export' => 'exportPositions',
+            'export' => 'exportPosition',
         ]);
     }
 
@@ -92,5 +95,22 @@ class PositionController extends Controller
     {
         Position::destroy($position->id);
         return redirect('/position')->with('success', 'Data has been deleted!');
+    }
+
+    public function export()
+    {
+        return Excel::download(new PositionExport, 'position.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $validatedData = $request->file('file');
+
+        $fileName = $validatedData->getClientOriginalName();
+        $validatedData->move('PositionData', $fileName);
+
+        Excel::import(new PositionImport, public_path('/PositionData/'.$fileName)); 
+        
+        return redirect('/position')->with('success', 'Data has been added!');
     }
 }
