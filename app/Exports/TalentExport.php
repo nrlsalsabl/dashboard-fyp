@@ -42,8 +42,12 @@ class TalentExport extends DefaultValueBinder implements FromQuery, WithHeadings
             $talent->phone,
             $talent->place,
             $talent->date,
-            $talent->village?->province?->name,
-            $talent->categories->implode('name', ', '),
+            $talent->village 
+                ? $talent->village?->province?->name 
+                : $talent->domicile,
+            $talent->categories->isNotEmpty()
+                ? $talent->categories->implode('name', ', ') 
+                : $talent->category,
             $talent->engagement,
             $talent->instagram,
             $talent->finstagram == 0 ? '0' : $talent->finstagram,
@@ -60,7 +64,9 @@ class TalentExport extends DefaultValueBinder implements FromQuery, WithHeadings
             $talent->rate_yt,
             $talent->rate_event,
             $talent->talent_exclusive ? 'Ya' : 'Tidak',
-            $talent->staff?->name,
+            $talent->staff
+            ? $talent->staff?->name
+            : $talent->pic,
             $talent->account_name,
             $talent->account_number,
             $talent->bank_name,

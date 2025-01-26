@@ -43,7 +43,6 @@ Route::post('/flogin', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::middleware(['role_or_permission:master', 'prevent-back'])->group(function () {
-
     Route::delete('/bulk-action', [BulkActionController::class, 'deleteAll']);
     Route::post('/talent-import', [TalentController::class, 'import']);
     Route::post('/staff-import', [StaffController::class, 'import']);
@@ -52,6 +51,8 @@ Route::middleware(['role_or_permission:master', 'prevent-back'])->group(function
     Route::post('/position-import', [PositionController::class, 'import']);
     Route::post('category-import', [CategoryController::class, 'import']);
     Route::post('/agency-import', [AgencyController::class, 'import']);
+    Route::post('/position-import', [PositionController::class, 'import']);
+    Route::post('/category-import', [CategoryController::class, 'import']);
     Route::get('/exportIntern', [InternController::class, 'export']);
     Route::get('/exportStaff', [StaffController::class, 'export']);
     Route::get('/exportTalent', [TalentController::class, 'export']);
@@ -64,6 +65,8 @@ Route::middleware(['role_or_permission:master', 'prevent-back'])->group(function
     Route::get('/exportSpending', [SpendingController::class, 'export']);
     Route::get('/exportScope', [ScopeController::class, 'export']);
     Route::get('/exportProject', [ProjectController::class, 'export']);
+    Route::get('/exportPosition', [PositionController::class, 'export']);
+    Route::get('/exportCategory', [CategoryController::class, 'export']);
 });
 
 Route::middleware(['auth', 'prevent-back'])->group(function () {
@@ -74,7 +77,7 @@ Route::middleware(['auth', 'prevent-back'])->group(function () {
     Route::get('/getBrands', [DependantDropdownController::class, 'getBrands']);
 });
 
-Route::middleware('role_or_permission:view data')->group(function () {
+Route::middleware(['role_or_permission:view data', 'auth'])->group(function () {
     Route::resource('/intern', InternController::class);
     Route::resource('/staff', StaffController::class);
     Route::resource('/talent', TalentController::class);
@@ -88,21 +91,21 @@ Route::middleware('role_or_permission:view data')->group(function () {
     Route::resource('/position', PositionController::class);
 
     // KATEGORI
-    Route::resource('/categories', CategoryController::class);
+    Route::resource('/category', CategoryController::class);
 
     Route::get('/fregistrasi', [TalentController::class, 'page']);
     Route::put('/fregistrasi/{talent}', [TalentController::class, 'updateForm']);
 });
 
-Route::middleware('role_or_permission:view users')->group(function () {
+Route::middleware(['role_or_permission:view users', 'auth'])->group(function () {
     Route::resource('/users-list', UserListController::class)->parameters(["users-list" => 'user']);
 });
 
-Route::middleware('role_or_permission:view spendings')->group(function () {
+Route::middleware(['role_or_permission:view spendings', 'auth'])->group(function () {
     Route::resource('/spendings', SpendingController::class);
 });
 
-Route::middleware('role_or_permission:view earnings')->group(function () {
+Route::middleware(['role_or_permission:view earnings', 'auth'])->group(function () {
     Route::resource('/earnings', EarningController::class);
 });
 
