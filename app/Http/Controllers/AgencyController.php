@@ -16,7 +16,7 @@ class AgencyController extends Controller
      */
     public function index()
     {
-        if(request('name')){
+        if (request('name')) {
             Agency::firstWhere('id', request(('name')));
         }
 
@@ -62,11 +62,11 @@ class AgencyController extends Controller
 
         // NAMA TIDAK BOLEH SAMA
         $agency = Agency::where('name', $request->name)->first();
-        if($agency) {
+        if ($agency) {
             return redirect('/agency')->with('error', 'Data has been added!');
         }
 
-        if($request->file('photo')) {
+        if ($request->file('photo')) {
             $validatedData['photo'] = $request->file('photo')->store('images/agencies');
         }
 
@@ -105,12 +105,12 @@ class AgencyController extends Controller
             'photo' => 'image|file|max:2048'
         ]);
 
-        if($request->file('photo')) {
+        if ($request->file('photo')) {
             $validatedData['photo'] = $request->file('photo')->store('images/agencies');
         }
 
         Agency::where('id', $agency->id)
-                ->update($validatedData);
+            ->update($validatedData);
 
         return redirect('/agency')->with('success', 'Data has been updated!');
     }
@@ -129,7 +129,7 @@ class AgencyController extends Controller
         }
     }
 
-    public function export() 
+    public function export()
     {
         return Excel::download(new AgencyExport, 'agency.xlsx');
     }
@@ -141,8 +141,8 @@ class AgencyController extends Controller
         $fileName = $validatedData->getClientOriginalName();
         $validatedData->move('AgencyData', $fileName);
 
-        Excel::import(new AgencyImport, public_path('/AgencyData/'.$fileName)); 
-        
+        Excel::import(new AgencyImport, public_path('/AgencyData/' . $fileName));
+
         return redirect('/agency')->with('success', 'Data has been added!');
     }
 }

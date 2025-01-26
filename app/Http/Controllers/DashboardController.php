@@ -19,41 +19,43 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $year = $request->input('year', date('Y'));
-    
+
         $months = range(1, 12);
-    
+
         $internData = collect($months)->map(function ($month) use ($year) {
             $result = Performance::selectRaw('AVG(result) as result')
                 ->whereYear('date', $year)
                 ->whereMonth('date', $month)
                 ->first();
-    
+
             return (object) [
                 'month' => $month,
                 'month_name' => Carbon::createFromDate(null, $month)->monthName,
                 'result' => $result ? $result->result : 0,
             ];
         });
-    
+
         // Query untuk staffData
         $staffData = collect($months)->map(function ($month) use ($year) {
             $result = Indicator::selectRaw('AVG(result) as result')
                 ->whereYear('date', $year)
                 ->whereMonth('date', $month)
                 ->first();
-    
+
             return (object) [
                 'month' => $month,
                 'month_name' => Carbon::createFromDate(null, $month)->monthName,
                 'result' => $result ? $result->result : 0,
             ];
         });
-    
+
         $positionType = $request->input('position', 'total');
-        $positionDataQuery = Position::select('positions.name AS name',
+        $positionDataQuery = Position::select(
+            'positions.name AS name',
             DB::raw('COUNT(DISTINCT interns.id) AS intern_count'),
             DB::raw('COUNT(DISTINCT staff.id) AS staff_count'),
-            DB::raw('COUNT(DISTINCT interns.id) + COUNT(DISTINCT staff.id) AS total_count'))
+            DB::raw('COUNT(DISTINCT interns.id) + COUNT(DISTINCT staff.id) AS total_count')
+        )
             ->leftJoin('interns', 'interns.position_id', '=', 'positions.id')
             ->leftJoin('staff', 'staff.position_id', '=', 'positions.id');
 
@@ -64,18 +66,50 @@ class DashboardController extends Controller
         }
 
         $positionData = $positionDataQuery->groupBy('name')->get();
-    
+
         $labels = [];
         $data = [];
         foreach ($positionData as $position) {
             $labels[] = $position->name;
             $data[] = $position->total_count;
         }
-    
+
         $staffCount = Staff::count();
         $talentCount = Talent::where('status', 1)->count();
         $internCount = Intern::count();
-    
+
+
+
+        $currentMonth = Carbon::now()->month;
+        $currentYear = Carbon::now()->year;
+        $years = Earning::selectRaw('YEAR(date) as year')
+            ->distinct()
+            ->orderBy('year', 'desc')
+            ->pluck('year');
+
+        $earningDataQuery = Earning::with('sows')->filter(request(['bulan', 'tahun']))->where('status', 'selesai');
+        if ($request->has('bulan') && $request->has('tahun')) {
+            $earningsData = $earningDataQuery->latest()->paginate(5);
+        } else {
+            $earningsData = Earning::whereMonth('date', $currentMonth)->whereYear('date', $currentYear)->where('status', 'selesai')->latest()->paginate(5);
+        }
+
+
+        $spendingsDataQuery = Spending::filter(request(['bulanSpending', 'tahunSpending']))->where('status', 'selesai');
+        if ($request->has('bulanSpending') && $request->has('tahunSpending')) {
+            $spendingsData = $spendingsDataQuery->latest()->paginate(5);
+        } else {
+            $spendingsData = Spending::whereMonth('date', $currentMonth)->whereYear('date', $currentYear)->where('status', 'selesai')->latest()->paginate(5);
+        }
+
+        $totalSpendings = $spendingsData->sum('budget');
+
+
+        $talent_rate = $earningsData->sum(function ($earning) {
+            return $earning->sows->sum('pivot.talent_rate');
+        });
+        $totalEarnings = ($earningsData->sum('rate')) - $talent_rate;
+
         return view('dashboard', [
             'title' => 'Dashboard',
             'positions' => Position::count(),
@@ -86,10 +120,15 @@ class DashboardController extends Controller
             'pie' => $data,
             'internData' => $internData,
             'staffData' => $staffData,
-            'earnings' => Earning::where('status', 'selesai')->latest()->paginate(5),
+            // 'earnings' => Earning::where('status', 'selesai')->latest()->paginate(5),
             // 'spendings' => Spending::latest()->paginate(5)
-            'spendings' => Spending::where('status', 'selesai')->latest()->paginate(5),
+            // 'spendings' => Spending::where('status', 'selesai')->latest()->paginate(5),
             'selectedYear' => $year,
+            'totalEarnings' => $totalEarnings,
+            'earnings' => $earningsData,
+            'spendings' => $spendingsData,
+            'years' => $years,
+            'totalSpendings' => $totalSpendings,
         ]);
     }
 }
