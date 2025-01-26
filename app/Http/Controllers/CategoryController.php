@@ -111,7 +111,6 @@ class CategoryController extends Controller
 
         Excel::import(new CategoryImport, public_path('/CategoryData/' . $fileName));
 
-        return redirect('/categories')->with('success', 'Data has been added!');
-
+        return redirect('/category')->with('success', 'Data has been added!');
     }
 }
