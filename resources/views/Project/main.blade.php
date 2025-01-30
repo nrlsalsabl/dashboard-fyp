@@ -211,4 +211,6 @@
     {{ $tables->links('partials.paginate') }}
 
     @include('project.create')
+
+    @include('project.import')
 @endsection

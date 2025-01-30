@@ -9,8 +9,9 @@ use App\Models\Agency;
 use App\Models\Talent;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProjectExport;
+use App\Imports\ProjectImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class ProjectController extends Controller
@@ -177,5 +178,17 @@ class ProjectController extends Controller
     public function export()
     {
         return Excel::download(new ProjectExport, 'Project.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $validatedData = $request->file('file');
+
+        $fileName = $validatedData->getClientOriginalName();
+        $validatedData->move('ProjectData', $fileName);
+
+        Excel::import(new ProjectImport, public_path('/ProjectData/' . $fileName));
+
+        return redirect('/project')->with('success', 'Data has been added!');
     }
 }

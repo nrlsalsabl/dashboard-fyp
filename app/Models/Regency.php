@@ -27,6 +27,8 @@ class Regency extends Model
      */
     protected $table = 'regencies';
 
+    protected $guarded = ['id'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -62,5 +64,10 @@ class Regency extends Model
         return Attribute::make(
             get: fn (string $value) => ucwords(strtolower($value)),
         );
+    }
+
+    public function talents()
+    {
+        return $this->hasMany(Talent::class);
     }
 }
