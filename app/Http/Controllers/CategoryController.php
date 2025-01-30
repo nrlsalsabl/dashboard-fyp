@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Exports\CategoryExport;
 use App\Imports\CategoryImport;
 use App\Models\Category;
@@ -45,7 +46,7 @@ class CategoryController extends Controller
         if (Category::where('name', $validatedData['name'])->exists()) {
             return redirect('/category')->with('error', 'Kategori sudah ada');
         }
-        
+
         Category::create($validatedData);
 
         return redirect('/category')->with('success', 'Data has been added!');
@@ -95,6 +96,7 @@ class CategoryController extends Controller
         return redirect('/category')->with('success', 'Data has been deleted!');
     }
 
+
     public function export()
     {
         return Excel::download(new CategoryExport, 'category.xlsx');
@@ -107,8 +109,8 @@ class CategoryController extends Controller
         $fileName = $validatedData->getClientOriginalName();
         $validatedData->move('CategoryData', $fileName);
 
-        Excel::import(new CategoryImport, public_path('/CategoryData/'.$fileName)); 
-        
+        Excel::import(new CategoryImport, public_path('/CategoryData/' . $fileName));
+
         return redirect('/category')->with('success', 'Data has been added!');
     }
 }

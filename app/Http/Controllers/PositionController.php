@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Exports\PositionExport;
 use App\Models\Position;
 use Illuminate\Http\Request;
@@ -83,8 +84,8 @@ class PositionController extends Controller
             return redirect('/position')->with('error', 'Posisi sudah ada');
         }
         Position::where('id', $position->id)
-                ->update($validatedData);
-        
+            ->update($validatedData);
+
         return redirect('/position')->with('success', 'Data has been updated!');
     }
 
@@ -109,8 +110,8 @@ class PositionController extends Controller
         $fileName = $validatedData->getClientOriginalName();
         $validatedData->move('PositionData', $fileName);
 
-        Excel::import(new PositionImport, public_path('/PositionData/'.$fileName)); 
-        
+        Excel::import(new PositionImport, public_path('/PositionData/' . $fileName));
+
         return redirect('/position')->with('success', 'Data has been added!');
     }
 }

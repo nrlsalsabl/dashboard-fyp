@@ -23,6 +23,7 @@ use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\CustomInternController;
 use App\Http\Controllers\DependantDropdownController;
+use App\Models\Position;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,8 @@ Route::middleware(['role_or_permission:master', 'prevent-back'])->group(function
     Route::post('/staff-import', [StaffController::class, 'import']);
     Route::post('/intern-import', [InternController::class, 'import']);
     Route::post('/brand-import', [BrandController::class, 'import']);
+    Route::post('/position-import', [PositionController::class, 'import']);
+    Route::post('category-import', [CategoryController::class, 'import']);
     Route::post('/agency-import', [AgencyController::class, 'import']);
     Route::post('/position-import', [PositionController::class, 'import']);
     Route::post('/category-import', [CategoryController::class, 'import']);
