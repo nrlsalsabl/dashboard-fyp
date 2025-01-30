@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
         // $user->assignRole($role3);
 
 
-        $this->call(PermissionsDemoSeeder::class);
+        // $this->call(PermissionsDemoSeeder::class);
 
         $positions = [
             'Business Development',
@@ -74,34 +74,32 @@ class DatabaseSeeder extends Seeder
         }
 
         // Call artisan for indo region
-        $this->call(IndoRegionSeeder::class);
+        // $this->call(IndoRegionSeeder::class);
 
         // Get all village_id from database and store in array
-        $villageIds = \App\Models\Village::pluck('id')->toArray();
+        // $villageIds = \App\Models\Village::pluck('id')->toArray();
 
-        Intern::factory(20)->create([
-            'village_id' => function() use ($villageIds) {
-                return $villageIds[array_rand($villageIds)];
-            },
-        ]);
+        // Intern::factory(20)->create([
+        //     'village_id' => function() use ($villageIds) {
+        //         return $villageIds[array_rand($villageIds)];
+        //     },
+        // ]);
 
-        Staff::factory(20)->create([
-            'village_id' => function() use ($villageIds) {
-                return $villageIds[array_rand($villageIds)];
-            },
-        ]);
+        // Staff::factory(20)->create([
+        //     'village_id' => function() use ($villageIds) {
+        //         return $villageIds[array_rand($villageIds)];
+        //     },
+        // ]);
         
-        Talent::factory(20)->create([
-            'village_id' => function() use ($villageIds) {
-                return $villageIds[array_rand($villageIds)];
-            },
-        ]);
+        // Talent::factory(20)->create([
+        //     'village_id' => function() use ($villageIds) {
+        //         return $villageIds[array_rand($villageIds)];
+        //     },
+        // ]);
 
-        Brand::factory(20)->create();
+        // Brand::factory(20)->create();
 
-        Agency::factory(20)->create();
-
-        
+        // Agency::factory(20)->create();
 
         $sows = [
             'IG Feed',
@@ -119,29 +117,29 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        Earning::factory(20)->create();
+        // Earning::factory(20)->create();
 
         # earning_sow
-        $earnings = Earning::all();
-        $sows = Sow::all();
-        foreach ($earnings as $earning) {
-            $randomSow = $sows->random();
-            $earning->sows()->attach($randomSow, [
-                'talent_rate' => rand(1000, 1000000),
-                'note' => fake()->optional()->sentence(),
-            ]);
+        // $earnings = Earning::all();
+        // $sows = Sow::all();
+        // foreach ($earnings as $earning) {
+        //     $randomSow = $sows->random();
+        //     $earning->sows()->attach($randomSow, [
+        //         'talent_rate' => rand(1000, 1000000),
+        //         'note' => fake()->optional()->sentence(),
+        //     ]);
 
-            $randomSow2 = $sows->random();
-            while($randomSow == $randomSow2) {
-                $randomSow2 = $sows->random();
-            }
-            if(rand(0, 1)) {
-                $earning->sows()->attach($randomSow2, [
-                    'talent_rate' => rand(1000, 1000000),
-                    'note' => fake()->optional()->sentence(),
-                ]);
-            }
-        }
+        //     $randomSow2 = $sows->random();
+        //     while($randomSow == $randomSow2) {
+        //         $randomSow2 = $sows->random();
+        //     }
+        //     if(rand(0, 1)) {
+        //         $earning->sows()->attach($randomSow2, [
+        //             'talent_rate' => rand(1000, 1000000),
+        //             'note' => fake()->optional()->sentence(),
+        //         ]);
+        //     }
+        // }
 
         $categories = [
             'Model, Fashion',
@@ -166,29 +164,29 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        $brands = Brand::all();
-        $talents = Talent::all();
-        $categories = Category::all();
-        foreach ($brands as $brand) {
-            $randomCategory = $categories->random();
-            $brand->categories()->attach($randomCategory);
-        }
-        foreach ($talents as $talent) {
-            $randomCategory = $categories->random();
-            $talent->categories()->attach($randomCategory);
-        }
+        // $brands = Brand::all();
+        // $talents = Talent::all();
+        // $categories = Category::all();
+        // foreach ($brands as $brand) {
+        //     $randomCategory = $categories->random();
+        //     $brand->categories()->attach($randomCategory);
+        // }
+        // foreach ($talents as $talent) {
+        //     $randomCategory = $categories->random();
+        //     $talent->categories()->attach($randomCategory);
+        // }
 
         // Spendings
-        $staffIds = Staff::all()->pluck('id')->toArray();
-        for ($i=0; $i < 10; $i++) { 
-            Spending::create([
-                'staff_id' => fake()->randomElement($staffIds),
-                'requirement' => fake()->sentence(),
-                'budget' => fake()->numberBetween(10000, 2500000),
-                'proof' => 'images/no-image.png',
-                'date' => fake()->date('Y-m-d'),
-                'status' => fake()->randomElement(['proses', 'selesai', 'gagal'])
-            ]);
-        }
+        // $staffIds = Staff::all()->pluck('id')->toArray();
+        // for ($i=0; $i < 10; $i++) { 
+        //     Spending::create([
+        //         'staff_id' => fake()->randomElement($staffIds),
+        //         'requirement' => fake()->sentence(),
+        //         'budget' => fake()->numberBetween(10000, 2500000),
+        //         'proof' => 'images/no-image.png',
+        //         'date' => fake()->date('Y-m-d'),
+        //         'status' => fake()->randomElement(['proses', 'selesai', 'gagal'])
+        //     ]);
+        // }
     }
 }
