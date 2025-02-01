@@ -52,6 +52,11 @@ class Staff extends Model
         return $this->belongsTo(Village::class);
     }
 
+    public function regency()
+    {
+        return $this->belongsTo(Regency::class);
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {
