@@ -51,11 +51,11 @@ class TalentImport implements ToModel, WithStartRow
             $existingRegency = Regency::firstOrCreate(['name' => $finalName]);
         }
 
-        $talentExclusive = $row[23] == 1 ? true : false;
-        $shopeeAffiliate = $row[30] == 1 ? true : false;
-        $tiktokAffiliate = $row[31] == 1 ? true : false;
-        $mcnTiktok = $row[32] == 1 ? true : false;
-        $status = $row[33] == 1 ? true : false;
+        $talentExclusive = $row[23] == 'Ya' ? true : false;
+        $shopeeAffiliate = $row[30] == 'Ya' ? true : false;
+        $tiktokAffiliate = $row[31] == 'Ya' ? true : false;
+        $mcnTiktok = $row[32] == 'Ya' ? true : false;
+        $status = $row[33] == 'Aktif' ? true : false;
 
         // Buat talent
         $talent = new Talent([

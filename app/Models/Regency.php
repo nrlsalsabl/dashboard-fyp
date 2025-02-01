@@ -70,4 +70,9 @@ class Regency extends Model
     {
         return $this->hasMany(Talent::class);
     }
+
+    public function staffs()
+    {
+        return $this->hasMany(Staff::class);
+    }
 }

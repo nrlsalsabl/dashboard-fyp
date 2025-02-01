@@ -169,7 +169,7 @@
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $staff->position->name }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $staff->phone }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $staff->place }}, {{ \Carbon\Carbon::parse($staff->birth)->format('d F Y') }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $staff->village?->province?->name }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $staff->village?->province?->name ?? $staff->regency->name }}</td>
                                 <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $staff->instagram }}, {{ $staff->linkedin }}</td>
                                 <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
                                     @if ($staff->status == 1)
