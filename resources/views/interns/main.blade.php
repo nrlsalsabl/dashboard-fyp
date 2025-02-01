@@ -155,7 +155,7 @@
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->position->name }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->phone }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->place }}, {{ \Carbon\Carbon::parse($intern->birth)->format('d F Y') }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->village?->province?->name }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->village?->province?->name ?? $intern->regency->name }}</td>
                                 <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">{{ $intern->instagram }}, {{ $intern->linkedin }}</td>
                                 <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
                                     @if ($intern->status == 1)
