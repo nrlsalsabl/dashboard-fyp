@@ -136,7 +136,7 @@
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->phone }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->place }}, {{ \Carbon\Carbon::parse($talent->date)->format('d F Y') }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->village?->province?->name }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->village?->province?->name ?? $talent->regency->name }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @foreach ($talent->categories as $index => $category)
                                         @if ($index > 0)
@@ -164,16 +164,16 @@
                                     </a>
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->finstagram }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->rate_igs }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->rate_igf }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->rate_igr }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->rate_igl }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ 'Rp' . (floor($talent->rate_igs) == $talent->rate_igs ? number_format($talent->rate_igs, 0, ',', '.') : number_format($talent->rate_igs, 2, ',', '.')) }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ 'Rp' . (floor($talent->rate_igf) == $talent->rate_igf ? number_format($talent->rate_igf, 0, ',', '.') : number_format($talent->rate_igf, 2, ',', '.')) }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ 'Rp' . (floor($talent->rate_igr) == $talent->rate_igr ? number_format($talent->rate_igr, 0, ',', '.') : number_format($talent->rate_igr, 2, ',', '.')) }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ 'Rp' . (floor($talent->rate_igl) == $talent->rate_igl ? number_format($talent->rate_igl, 0, ',', '.') : number_format($talent->rate_igl, 2, ',', '.')) }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->ftiktok }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->rate_ttf }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->rate_ttl }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ 'Rp' . (floor($talent->rate_ttf) == $talent->rate_ttf ? number_format($talent->rate_ttf, 0, ',', '.') : number_format($talent->rate_ttf, 2, ',', '.')) }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ 'Rp' . (floor($talent->rate_ttl) == $talent->rate_ttl ? number_format($talent->rate_ttl, 0, ',', '.') : number_format($talent->rate_ttl, 2, ',', '.')) }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->syoutube }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->rate_yt    }}</td>
-                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $talent->rate_event }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ 'Rp' . (floor($talent->rate_yt) == $talent->rate_yt ? number_format($talent->rate_yt, 0, ',', '.') : number_format($talent->rate_yt, 2, ',', '.')) }}</td>
+                                <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ 'Rp' . (floor($talent->rate_event) == $talent->rate_event ? number_format($talent->rate_event, 0, ',', '.') : number_format($talent->rate_event, 2, ',', '.')) }}</td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     @if($talent->talent_exclusive == 1)
                                         <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
