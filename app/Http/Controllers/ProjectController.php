@@ -23,12 +23,10 @@ class ProjectController extends Controller
     {
         $tables = Project::latest()->filter(request(['search', 'name']))->paginate(10)->withQueryString();
         $staff = Staff::all();
-        $brand = Brand::all();
+        $brand = Brand::orderBy('name')->get();
         $talent = Talent::all();
         $agency = Agency::all();
         $scopes = Scope::all();
-
-
 
         return view('project.main', [
             'title' => 'Project',
@@ -40,7 +38,6 @@ class ProjectController extends Controller
             'talent' => $talent,
             'agency' => $agency,
             'scopes' => $scopes,
-
         ]);
     }
 
@@ -73,10 +70,6 @@ class ProjectController extends Controller
             'Keterangan' => 'required',
         ]);
 
-
-
-
-
         if ($validatedData) {
             $date = $request->date . '-01';
             $data = [
@@ -95,8 +88,6 @@ class ProjectController extends Controller
                 'Keterangan' => $request->Keterangan,
             ];
         }
-
-
 
         Project::create($data);
         return redirect('/project')->with('success', 'Data has been added!');
