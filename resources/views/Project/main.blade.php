@@ -60,14 +60,14 @@
                     <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
                         <thead class="bg-gray-100 dark:bg-gray-700">
                             <tr>
-                                {{-- <th scope="col" class="p-4">
+                                <th scope="col" class="p-4">
                                     <div class="flex items-center">
                                         <input id="select_all_ids" name="ids" aria-describedby="checkbox-1"
                                             type="checkbox"
                                             class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
                                         <label for="checkbox-all" class="sr-only">checkbox</label>
                                     </div>
-                                </th> --}}
+                                </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400 ">
                                     Nama Project
@@ -126,7 +126,7 @@
                             @foreach ($tables as $project)
                                 <tr class="hover:bg-gray-100 dark:hover:bg-gray-700"
                                     id="{{ $search }}_ids{{ $project->id }}">
-                                    {{-- <td class="w-4 p-4">
+                                    <td class="w-4 p-4">
                                         <div class="flex items-center">
                                             <input id="" aria-describedby="checkbox-1" name="ids"
                                                 type="checkbox"
@@ -134,7 +134,7 @@
                                                 value="{{ $project->id }}">
                                             <label for="checkbox" class="sr-only">checkbox</label>
                                         </div>
-                                    </td> --}}
+                                    </td>
                                     <td
                                         class="w-full p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $project->name }}

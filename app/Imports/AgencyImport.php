@@ -2,11 +2,18 @@
 
 namespace App\Imports;
 
+use App\Models\Staff;
 use App\Models\Agency;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class AgencyImport implements ToModel
+class AgencyImport implements ToModel, WithStartRow
 {
+    public function startRow(): int
+    {
+        return 2; // Mulai dari baris kedua (melewati heading)
+    }
+
     /**
     * @param array $row
     *
@@ -14,12 +21,15 @@ class AgencyImport implements ToModel
     */
     public function model(array $row)
     {
+        // Cari atau buat staff
+        $staff = Staff::firstOrCreate(['name' => $row[5]]);
+
         return new Agency([
-            'staff_id' => $row[1],
-            'name' => $row[2],
-            'email' => $row[3],
+            'name' => $row[1],
+            'email' => $row[2],
+            'address' => $row[3],
             'phone' => $row[4],
-            'address' => $row[5],
+            'staff_id' => $staff->id,            
         ]);
     }
 }
