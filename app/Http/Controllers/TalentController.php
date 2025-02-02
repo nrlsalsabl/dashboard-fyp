@@ -259,7 +259,7 @@ class TalentController extends Controller
         return view('forms.main', [
             'title' => 'Registrasi',
             'search' => 'fregsitrasi',
-            'tables' => Talent::latest()->filter(request(['search', 'name']))->where('status', '=', 0)->paginate(10)->withQueryString(),
+            'tables' => Talent::latest()->filter(request(['search', 'name']))->where('status', '=', 0)->paginate(5)->withQueryString(),
             'categories' => Category::orderBy('name')->get(),
             'export' => 'exportRegis'
         ]);

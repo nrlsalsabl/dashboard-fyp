@@ -7,6 +7,7 @@ use App\Models\Performance;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\IndicatorInternExport;
+use App\Imports\IndicatorInternImport;
 
 class PerformanceController extends Controller
 {
@@ -116,5 +117,17 @@ class PerformanceController extends Controller
     public function export()
     {
         return Excel::download(new IndicatorInternExport, 'kpi_intern.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $validatedData = $request->file('file');
+
+        $fileName = $validatedData->getClientOriginalName();
+        $validatedData->move('IndicatorInternData', $fileName);
+
+        Excel::import(new IndicatorInternImport, public_path('/IndicatorInternData/' . $fileName));
+
+        return redirect('/kinerja-intern')->with('success', 'Data has been added!');
     }
 }
