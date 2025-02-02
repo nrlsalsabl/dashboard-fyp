@@ -1,6 +1,5 @@
-<div class="fixed left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full"
-    id="add-user-modal">
-    <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
+<div class="fixed left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto top-4 h-modal" id="add-user-modal">
+    <div class="relative w-full h-full max-w-2xl px-4">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
             <!-- Modal header -->
