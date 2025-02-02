@@ -45,6 +45,7 @@
                 <a href="/position" class="text-[#f84525] font-medium text-sm hover:text-red-800">Tampilkan</a>
             </div>
         </div>
+        @can('view dashboard')
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             <div
                 class="p-6 relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words w-full shadow-md shadow-black/5 rounded">
@@ -495,4 +496,5 @@
 
         generateYearOptions();
     </script>
+    @endcan
 @endsection

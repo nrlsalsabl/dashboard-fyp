@@ -254,4 +254,6 @@
     </div>
 </div>
 
+{{ $tables->links('partials.paginate') }}
+
 @endsection

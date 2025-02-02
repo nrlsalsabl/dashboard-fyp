@@ -382,8 +382,6 @@
                         @if (
                             !request()->is(
                                 'users-list',
-                                'kinerja-intern',
-                                'kinerja-staff',
                                 'earnings',
                                 'spendings',
                                 'scope'))

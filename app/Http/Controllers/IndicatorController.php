@@ -7,6 +7,7 @@ use App\Models\Indicator;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\IndicatorStaffExport;
+use App\Imports\IndicatorStaffImport;
 
 class IndicatorController extends Controller
 {
@@ -81,5 +82,17 @@ class IndicatorController extends Controller
     public function export()
     {
         return Excel::download(new IndicatorStaffExport, 'kpi_staff.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $validatedData = $request->file('file');
+
+        $fileName = $validatedData->getClientOriginalName();
+        $validatedData->move('IndicatorStaffData', $fileName);
+
+        Excel::import(new IndicatorStaffImport, public_path('/IndicatorStaffData/' . $fileName));
+
+        return redirect('/kinerja-staff')->with('success', 'Data has been added!');
     }
 }

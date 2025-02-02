@@ -136,5 +136,6 @@
 {{ $tables->links('partials.paginate') }}
 
 @include('iperform.create')
+@include('iperform.import')
 
 @endsection

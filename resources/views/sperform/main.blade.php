@@ -136,5 +136,6 @@
 {{ $tables->links('partials.paginate') }}
 
 @include('sperform.create')
+@include('sperform.import')
 
 @endsection
