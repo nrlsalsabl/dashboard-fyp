@@ -12,7 +12,7 @@
 
 <div class="fixed left-0 right-0 z-50 items-center justify-center hidden overflow-x-hidden overflow-y-auto top-4 md:inset-0 h-modal sm:h-full"
     id="edit-data-modal-{{ $project->id }}">
-    <div class="relative w-full h-full max-w-2xl px-4 md:h-auto">
+    <div class="relative w-full h-full max-w-2xl px-4">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-800">
             <!-- Modal header -->
@@ -107,11 +107,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Talent</label>
                             <select name="talent_id" id="talent_id"
                                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                @foreach ($talent as $item)
-                                    <option value="{{ $item->id }}"
-                                        {{ $item->id == $project->talent_id ? 'selected' : '' }}>
-                                        {{ $item->name }}</option>
-                                @endforeach
+
                             </select>
                             @error('talent_id')
                                 <div class="col-span-3">
@@ -125,10 +121,10 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Agency</label>
                             <select name="agency_id" id="agency_id"
                                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                @foreach ($agency as $item)
-                                    <option value="{{ $item->id }}"
-                                        {{ $item->id == $project->agency_id ? 'selected' : '' }}>
-                                        {{ $item->name }}</option>
+                                @foreach ($agency->sortBy('name') as $item)
+                            <option value="{{ $item->id }}" {{ $item->id == $project->agency_id ? 'selected' : '' }}>
+                            {{ $item->name }}
+                            </option>
                                 @endforeach
                             </select>
                             @error('agency_id')
