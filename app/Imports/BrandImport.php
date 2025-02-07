@@ -14,17 +14,18 @@ class BrandImport implements ToModel, WithStartRow
     {
         return 2; // Mulai dari baris kedua (melewati heading)
     }
-    
+
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function model(array $row)
     {
         // Cari atau buat staff
         $staff = Staff::firstOrCreate(['name' => $row[6]]);
 
+        // Buat brand baru
         $brand = new Brand([
             'name' => $row[1],
             'email' => $row[2],
@@ -38,7 +39,7 @@ class BrandImport implements ToModel, WithStartRow
             'nik' => $row[11],
         ]);
 
-        // Simpan talent ke database
+        // Simpan brand ke database
         $brand->save();
 
         // Simpan relasi ke tabel pivot (category_brand)
