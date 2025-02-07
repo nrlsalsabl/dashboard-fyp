@@ -118,6 +118,10 @@
                                 </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+                                    Keuntungan
+                                </th>
+                                <th scope="col"
+                                    class="p-4 text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                     Aksi
                                 </th>
                             </tr>
@@ -185,6 +189,10 @@
                                     <td
                                         class="w-full p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $project->Keterangan }}
+                                    </td>
+                                    <td
+                                        class="w-full p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
+                                        Rp. {{ number_format($project->rate_brand - $project->rate_talent, 2, ',', '.') }}
                                     </td>
                                     <td class="p-4 space-x-2 whitespace-nowrap">
                                         <!-- Edit User Modal -->
