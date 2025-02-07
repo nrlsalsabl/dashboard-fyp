@@ -1,10 +1,8 @@
-
 const options = {
-  colors: ["#1A56DB", "#FDBA8C"],
+  colors: ["#FF0000", "#3B82F6"], // warna default merah & hijau
   series: [
     {
       name: "Organic",
-      color: "#1A56DB",
       data: [
         { x: "Mon", y: 231 },
         { x: "Tue", y: 122 },
@@ -17,7 +15,6 @@ const options = {
     },
     {
       name: "Social media",
-      color: "#FDBA8C",
       data: [
         { x: "Mon", y: 232 },
         { x: "Tue", y: 113 },
@@ -43,6 +40,12 @@ const options = {
       columnWidth: "70%",
       borderRadiusApplication: "end",
       borderRadius: 8,
+      colors: {
+        ranges: [
+          { from: 0, to: 1000, color: "#FF0000" }, // merah
+          { from: 1001, to: 2000, color: "#00FF00" } // hijau
+        ]
+      }
     },
   },
   tooltip: {

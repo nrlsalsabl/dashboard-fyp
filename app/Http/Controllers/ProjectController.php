@@ -45,9 +45,11 @@ class ProjectController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        //
-    }
+{
+    $agency = Agency::orderBy('name')->get();
+    return view('project.create', compact('agency'));
+}
+
 
     /**
      * Store a newly created resource in storage.
@@ -104,7 +106,13 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project) {}
+    public function edit($id)
+    {
+        $project = Project::findOrFail($id);
+        $agency = Agency::orderBy('name')->get(); // ambil agency urut abjad
+        return view('project.edit', compact('project', 'agency'));
+    }
+
 
     /**
      * Update the specified resource in storage.

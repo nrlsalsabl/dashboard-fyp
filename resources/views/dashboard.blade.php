@@ -411,34 +411,35 @@
     </script>
 
     <script>
-        const options = {
-            colors: ["#1A56DB", "#FDBA8C"],
-            series: [{
-                    name: "Intern",
-                    color: "#1A56DB",
-                    data: {!! json_encode($internData) !!}.map(item => ({
-                        x: item.month_name,
-                        y: item.result
-                    }))
-                },
-                {
-                    name: "Staff",
-                    color: "#FDBA8C",
-                    data: {!! json_encode($staffData) !!}.map(item => ({
-                        x: item.month_name,
-                        y: item.result
-                    }))
-                },
-            ],
-            chart: {
-                type: "bar",
-                height: "420px",
-                fontFamily: "Inter, sans-serif",
-                toolbar: {
-                    show: false,
-                },
+    const options = {
+        colors: ["#FF0000", "#3B82F6"], // ubah warna bar
+        series: [{
+                name: "Intern",
+                color: "#FF0000", // ubah ke merah
+                data: {!! json_encode($internData) !!}.map(item => ({
+                    x: item.month_name,
+                    y: item.result
+                }))
             },
-        };
+            {
+                name: "Staff",
+                color: "#3B82F6", // ubah ke hijau
+                data: {!! json_encode($staffData) !!}.map(item => ({
+                    x: item.month_name,
+                    y: item.result
+                }))
+            },
+        ],
+        chart: {
+            type: "bar",
+            height: "420px",
+            fontFamily: "Inter, sans-serif",
+            toolbar: {
+                show: false,
+            },
+        },
+    };
+
 
         if (document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
             const chart = new ApexCharts(document.getElementById("column-chart"), options);
