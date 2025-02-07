@@ -106,6 +106,7 @@ Route::middleware(['role_or_permission:view users', 'auth'])->group(function () 
 
 Route::middleware(['role_or_permission:view spendings', 'auth'])->group(function () {
     Route::resource('/spendings', SpendingController::class);
+    Route::put('/spendings/edit/{id}/', [SpendingController::class, 'updateUser'])->name('spendings.updateUser');
 });
 
 Route::middleware(['role_or_permission:view earnings', 'auth'])->group(function () {

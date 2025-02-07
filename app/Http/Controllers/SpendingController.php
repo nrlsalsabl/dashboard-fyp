@@ -60,8 +60,8 @@ class SpendingController extends Controller
             'proof' => 'image|file|max:5120', // 1MB Max
         ]);
 
-        if($request->file('proof')) {
-            $validatedData['proof'] = $request->file('proof')->store('images/spends');
+        if ($request->file('proof')) {
+            $validatedData['proof'] = $request->file('proof')->store('images/spends', 'public');
         }
 
         Spending::create($validatedData);
@@ -95,7 +95,7 @@ class SpendingController extends Controller
         ]);
 
         Spending::where('id', $spending->id)
-                ->update($validatedData);
+            ->update($validatedData);
 
         return redirect('/spendings')->with('success', 'Data has been updated!');
     }
@@ -113,5 +113,24 @@ class SpendingController extends Controller
     public function export()
     {
         return Excel::download(new SpendingExport, 'spending.xlsx');
+    }
+
+    public function updateUser(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'staff_id' => 'required',
+            'requirement' => 'required',
+            'budget' => 'required',
+            'date' => 'required',
+        ]);
+
+        if ($request->file('proof')) {
+            $validatedData['proof'] = $request->file('proof')->store('images/spends', 'public');
+        }
+
+        Spending::where('id', $id)
+            ->update($validatedData);
+
+        return redirect('/spendings')->with('success', 'Data has been updated!');
     }
 }
