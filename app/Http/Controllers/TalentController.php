@@ -15,7 +15,7 @@ class TalentController extends Controller
 {
     public function index()
     {
-        if(request('name')){
+        if (request('name')) {
             Talent::firstWhere('id', request(('name')));
         }
 
@@ -25,11 +25,11 @@ class TalentController extends Controller
         $tables = Talent::query()
             ->select('talent.*')
             ->with('categories')
-            ->when($sort === 'category', function($query) use ($direction) {
+            ->when($sort === 'category', function ($query) use ($direction) {
                 $query->leftJoin('category_talent', 'talent.id', '=', 'category_talent.talent_id')
                     ->leftJoin('categories', 'category_talent.category_id', '=', 'categories.id')
                     ->orderBy('categories.name', $direction);
-            }, function($query) use ($sort, $direction) {
+            }, function ($query) use ($sort, $direction) {
                 $query->orderBy($sort, $direction);
             })
             ->filter(request(['search', 'name', 'category', 'mcn', 'staff', 'bulan']))
@@ -81,7 +81,7 @@ class TalentController extends Controller
             'staff_id' => 'required',
             'shopee_affiliate' => 'required',
             'tiktok_affiliate' => 'required',
-            'mcn_tiktok' => 'required', 
+            'mcn_tiktok' => 'required',
             'status' => 'required',
             'village_id' => 'required',
 
@@ -96,10 +96,9 @@ class TalentController extends Controller
         // dd($validatedData);
 
         // Check if a new photo is uploaded
-        if($request->file('photo')) {
+        if ($request->file('photo')) {
             $validatedData['photo'] = $request->file('photo')->store('images/talents');
-        } 
-        else {
+        } else {
             // No new photo uploaded, keep the existing one
             $validatedData['photo'] = $talent->photo;
         }
@@ -110,7 +109,7 @@ class TalentController extends Controller
         unset($validatedData['category_id']);
 
         Talent::where('id', $talent->id)
-                ->update($validatedData);
+            ->update($validatedData);
 
         return redirect('/talent')->with('success', 'Data has been updated!');
     }
@@ -142,7 +141,7 @@ class TalentController extends Controller
     }
 
     public function form(Request $request)
-    {   
+    {
 
         // DAPATKAN DATA ID STAFF TERAKHIR
         // $result = $request->staff_id == 'input_manual';
@@ -211,17 +210,17 @@ class TalentController extends Controller
 
         unset($validatedData['category_id']);
 
-        if($request->file('photo')) {
+        if ($request->file('photo')) {
             $validatedData['photo'] = $request->file('photo')->store('images/talents');
         }
 
 
         // // CEK NILAI DARI staff_id
         // if ($request->staff_id == 'input_manual') {
-        
+
         //     // Ambil data nama staff dari request
         //     $staffName = $request->manual_staff_name;
-    
+
         //     // Simpan data staff baru
         //     $save = Staff::create([
         //         'name' => $staffName,
@@ -236,22 +235,20 @@ class TalentController extends Controller
         //         'instagram' => '',
         //         'linkedin' => ''
         //     ]);
-    
+
         //     // Tambahkan ID staff yang baru ditambahkan ke data yang divalidasi
         //     $validatedData['staff_id'] = $save->id;
 
         // }
 
         $talent = Talent::create($validatedData);
-        
-        foreach ($categories as $category)
-        {
+
+        foreach ($categories as $category) {
             $talent->categories()->attach($category);
         }
 
         // Redirect ke halaman registrasi talent dengan pesan sukses
         return back()->with('success', 'Berhasil Mendaftar!');
-
     }
 
     public function page()
@@ -272,16 +269,15 @@ class TalentController extends Controller
         ]);
 
         // Check if a new photo is uploaded
-        if($request->file('photo')) {
+        if ($request->file('photo')) {
             $validatedData['photo'] = $request->file('photo')->store('images/talents');
-        } 
-        else {
+        } else {
             // No new photo uploaded, keep the existing one
             $validatedData['photo'] = $talent->photo;
         }
 
         Talent::where('id', $talent->id)
-                ->update($validatedData);
+            ->update($validatedData);
 
         return redirect('/fregistrasi')->with('success', 'Data has been updated!');
     }
@@ -293,8 +289,8 @@ class TalentController extends Controller
         $fileName = $validatedData->getClientOriginalName();
         $validatedData->move('TalentData', $fileName);
 
-        Excel::import(new TalentImport, public_path('/TalentData/'.$fileName)); 
-        
+        Excel::import(new TalentImport, public_path('/TalentData/' . $fileName));
+
         return redirect('/talent')->with('success', 'Data has been added!');
     }
 }
