@@ -21,10 +21,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $tables = Project::latest()->filter(request(['search', 'name']))->paginate(10)->withQueryString();
+        $tables = Project::latest()->filter(request(['search', 'name', 'staff', 'talent', 'bulan', 'tahun']))->paginate(10)->withQueryString();
         $staff = Staff::all();
         $brand = Brand::orderBy('name')->get();
-        $talent = Talent::all();
+        $talents = Talent::all();
         $agency = Agency::all();
         $scopes = Scope::all();
 
@@ -35,7 +35,7 @@ class ProjectController extends Controller
             'tables' => $tables,
             'staff' => $staff,
             'brand' => $brand,
-            'talent' => $talent,
+            'talents' => $talents,
             'agency' => $agency,
             'scopes' => $scopes,
         ]);
@@ -45,10 +45,10 @@ class ProjectController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-{
-    $agency = Agency::orderBy('name')->get();
-    return view('project.create', compact('agency'));
-}
+    {
+        $agency = Agency::orderBy('name')->get();
+        return view('project.create', compact('agency'));
+    }
 
 
     /**

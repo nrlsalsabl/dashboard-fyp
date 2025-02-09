@@ -22,6 +22,9 @@ class BrandImport implements ToModel, WithStartRow
      */
     public function model(array $row)
     {
+        if (!isset($row[1]) || empty(trim($row[1]))) {
+            return null;
+        }
         // Cari atau buat staff
         $staff = Staff::firstOrCreate(['name' => $row[6]]);
 
