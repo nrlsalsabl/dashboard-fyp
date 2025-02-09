@@ -148,7 +148,7 @@
                                 </select>
                             </div>
                         @endif
-                        @if (request()->is('earnings', 'spendings', 'kinerja-intern', 'kinerja-staff'))
+                        @if (request()->is('earnings', 'spendings', 'kinerja-intern', 'kinerja-staff', 'project'))
                             <div class="relative mt-1 pl-3">
                                 <select id="bulan" name="bulan"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -174,6 +174,32 @@
                                         <option value="{{ $year }}"
                                             {{ request('tahun') == $year ? 'selected' : '' }}>{{ $year }}
                                         </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
+                        @if (request()->is('project'))
+                            <div class="relative mt-1 pl-3">
+                                <select id="staff" name="staff"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    aria-placeholder="Pilih PIC">
+                                    <option value="">Pilih PIC</option>
+                                    @foreach ($staff as $pic)
+                                        <option value="{{ $pic->id }}"
+                                            {{ request('staff') == $pic->id ? 'selected' : '' }}>{{ $pic->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="relative mt-1 pl-3">
+                                <select id="talent" name="talent"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    aria-placeholder="Pilih Talent">
+                                    <option value="">Pilih Talent</option>
+                                    @foreach ($talents as $talent)
+                                        <option value="{{ $talent->id }}"
+                                            {{ request('talent') == $talent->id ? 'selected' : '' }}>
+                                            {{ $talent->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

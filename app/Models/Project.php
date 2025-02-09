@@ -42,5 +42,25 @@ class Project extends Model
                 $subquery->where('name', 'like', '%' . $search . '%');
             });
         });
+
+        $query->when($filters['talent'] ?? false, function ($query, $talent) {
+            $query->where('talent_id', $talent);
+        });
+
+        $query->when($filters['bulan'] ?? false, function ($query, $bulan) {
+            $query->whereMonth('date', $bulan);
+        });
+
+        $query->when($filters['tahun'] ?? false, function ($query, $tahun) {
+            $query->whereYear('date', $tahun);
+        });
+
+        $query->when($filters['staff'] ?? false, function ($query, $staff) {
+            $query->where('staff_id', $staff);
+        });
+
+        $query->when($filters['brand'] ?? false, function ($query, $brand) {
+            $query->where('brand_id', $brand);
+        });
     }
 }
