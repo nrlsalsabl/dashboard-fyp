@@ -48,7 +48,7 @@ class Project extends Model
         });
 
         $query->when($filters['bulan'] ?? false, function ($query, $bulan) {
-            $query->whereMonth('date', $bulan);
+            $query->whereMonth('tgl_pelunasan_brand', $bulan);
         });
 
         $query->when($filters['tahun'] ?? false, function ($query, $tahun) {

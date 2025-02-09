@@ -118,7 +118,8 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <p id="error-sow" class="mt-2 text-sm text-red-600 dark:text-red-500 hidden">Harap pilih minimal 1 SOW.</p>
+                            <p id="error-sow" class="mt-2 text-sm text-red-600 dark:text-red-500 hidden">Harap pilih
+                                minimal 1 SOW.</p>
                         </div>
                         <div class="col-span-6 sm:col-span-6">
                             <label for="rate" id="rate-label"
@@ -191,7 +192,7 @@
                     });
                     $("#earnable-button").html(
                         'Agency <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>'
-                        );
+                    );
                     $("#rate-label").html('Rate Agency');
                 }
                 $("#earnable-button").click();
@@ -216,7 +217,7 @@
                     });
                     $("#earnable-button").html(
                         'Brand <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>'
-                        );
+                    );
                     $("#rate-label").html('Rate Brand');
                 }
                 $("#earnable-button").click();
