@@ -26,6 +26,7 @@ return new class extends Migration
             $table->date('tgl_pelunasan_talent');
             $table->date('tgl_pelunasan_brand');
             $table->text('Keterangan');
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }
