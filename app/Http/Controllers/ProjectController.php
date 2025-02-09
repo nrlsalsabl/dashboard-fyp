@@ -21,7 +21,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $tables = Project::latest()->filter(request(['search', 'name', 'staff', 'talent', 'bulan', 'tahun']))->paginate(10)->withQueryString();
+        $tables = Project::latest()->filter(request(['search', 'name', 'brand', 'staff', 'talent', 'bulan', 'tahun']))->paginate(10)->withQueryString();
         $staff = Staff::all();
         $brand = Brand::orderBy('name')->get();
         $talents = Talent::all();
