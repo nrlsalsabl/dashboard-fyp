@@ -120,6 +120,12 @@
                                     class="p-4 text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                     Keuntungan
                                 </th>
+                                <th scope="col" class="p-4 text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+                                    Status
+                                </th>
+                                <th scope="col" class="p-4 text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
+                                    Link Project
+                                </th>
                                 <th scope="col"
                                     class="p-4 text-xs font-medium text-center text-gray-500 uppercase dark:text-gray-400">
                                     Aksi
@@ -193,6 +199,26 @@
                                     <td
                                         class="w-full p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
                                         Rp. {{ number_format($project->rate_brand - $project->rate_talent, 2, ',', '.') }}
+                                    </td>
+                                    <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
+                                        @if ($project->status == 'ongoing')
+                                        <div class="inline-flex items-center px-4 py-1.5 rounded-full text-black bg-blue-600 border border-blue-700 shadow-md">
+                                                <h2 class="text-sm font-normal">On-going</h2>
+                                            </div>
+                                        @elseif ($project->status == 'completed')
+                                            <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
+                                                <h2 class="text-sm font-normal">Completed</h2>
+                                            </div>
+                                        @elseif ($project->status == 'not_completed')
+                                            <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-rose-500 bg-rose-200 dark:bg-gray-800">
+                                                <h2 class="text-sm font-normal">Not Completed</h2>
+                                            </div>
+                                        @endif
+                                    </td>
+                                    <td class="w-full p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
+                                        <a href="{{ $project->link }}" target="_blank" class="text-blue-500 hover:underline">
+                                            {{ $project->link ? 'Lihat' : '-' }}
+                                        </a>
                                     </td>
                                     <td class="p-4 space-x-2 whitespace-nowrap">
                                         <!-- Edit User Modal -->

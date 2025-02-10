@@ -70,6 +70,7 @@ class ProjectController extends Controller
             'tgl_pelunasan_talent' => 'required',
             'tgl_pelunasan_brand' => 'required',
             'Keterangan' => 'required',
+            'link' => 'nullable|url',
         ]);
 
         if ($validatedData) {
@@ -88,6 +89,7 @@ class ProjectController extends Controller
                 'tgl_pelunasan_talent' => $request->tgl_pelunasan_talent,
                 'tgl_pelunasan_brand' => $request->tgl_pelunasan_brand,
                 'Keterangan' => $request->Keterangan,
+                'link' => $request->link,
             ];
         }
 
@@ -137,6 +139,8 @@ class ProjectController extends Controller
             'tgl_pelunasan_talent' => 'required',
             'tgl_pelunasan_brand' => 'required',
             'Keterangan' => 'required',
+            'link' => 'nullable|url',
+            'status' => 'required|in:ongoing,completed,not_completed',
         ]);
 
         if ($validatedData) {
@@ -155,6 +159,8 @@ class ProjectController extends Controller
                 'tgl_pelunasan_talent' => $request->tgl_pelunasan_talent,
                 'tgl_pelunasan_brand' => $request->tgl_pelunasan_brand,
                 'Keterangan' => $request->Keterangan,
+                'link' => $request->link,
+                'status' => $request->status,
             ];
         }
 

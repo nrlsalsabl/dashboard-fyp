@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 class Project extends Model
 {
     use HasFactory;
@@ -62,5 +61,10 @@ class Project extends Model
         $query->when($filters['brand'] ?? false, function ($query, $brand) {
             $query->where('brand_id', $brand);
         });
+
+        $query->when($filters['link'] ?? false, function ($query, $link) {
+            $query->where('link', 'like', '%' . $link . '%');
+        });
     }
 }
+
