@@ -1,0 +1,106 @@
+* [33m5cb118f[m[33m ([m[1;36mHEAD -> [m[1;32mproject-page[m[33m, [m[1;31morigin/project-page[m[33m)[m menambahkan status ke tabel projects
+* [33m4881f22[m update fitur link at project
+*   [33m4d7f6a2[m Merge branch 'dev' of https://github.com/nrlsalsabl/dashboard-fyp into project-page
+[32m|[m[33m\[m  
+* [33m\[m   [33m89de3d4[m Merge branch 'fix-import-bug-brand' of https://github.com/nrlsalsabl/dashboard-fyp into project-page
+[34m|[m[35m\[m [33m\[m  
+[34m|[m [35m|[m [33m|[m *   [33md393267[m[33m ([m[1;35mrefs/stash[m[33m)[m WIP on dev: d76cb02 excel
+[34m|[m [35m|[m [33m|[m [36m|[m[1;31m\[m  
+[34m|[m [35m|[m [33m|[m [36m|[m * [33m7307261[m index on dev: d76cb02 excel
+[34m|[m [35m|[m [33m|[m [36m|[m[36m/[m  
+[34m|[m [35m|[m [33m|[m * [33md76cb02[m[33m ([m[1;31morigin/dev[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mdev[m[33m)[m excel
+[34m|[m [35m|[m [33m|[m * [33m57b41a1[m fixed user list update, project controller edit, edit project, and add new admin
+[34m|[m [35m|[m [33m|[m[33m/[m  
+[34m|[m [35m|[m *   [33mfcc8aca[m Merge pull request #19 from nrlsalsabl/update-status-default-pendapatan-page
+[34m|[m [35m|[m [1;32m|[m[1;33m\[m  
+[34m|[m [35m|[m [1;32m|[m * [33m869c66b[m update status default on earning page and run migrate first
+[34m|[m [35m|[m [1;32m|[m[1;32m/[m  
+[34m|[m [35m|[m *   [33m6506c80[m Merge pull request #18 from nrlsalsabl/filter-project-page
+[34m|[m [35m|[m [1;34m|[m[1;35m\[m  
+[34m|[m [35m|[m [1;34m|[m * [33m18f310a[m add filter feature project page
+[34m|[m [35m|[m [1;34m|[m[1;34m/[m  
+[34m|[m [35m|[m *   [33m33f7337[m Merge pull request #17 from nrlsalsabl/project-page
+[34m|[m [35m|[m [1;36m|[m[34m\[m  
+[34m|[m [35m|[m[34m_[m[1;36m|[m[34m/[m  
+[34m|[m[34m/[m[35m|[m [1;36m|[m   
+* [35m|[m [1;36m|[m [33m584e61e[m create, edit project page
+* [35m|[m [1;36m|[m [33m04ef196[m update setephen
+[31m|[m [35m|[m *   [33mae91884[m Merge pull request #16 from nrlsalsabl/fix-import-bug-brand
+[31m|[m [35m|[m [32m|[m[35m\[m  
+[31m|[m [35m|[m [32m|[m[35m/[m  
+[31m|[m [35m|[m[35m/[m[32m|[m   
+[31m|[m * [32m|[m [33m3376380[m[33m ([m[1;31morigin/fix-import-bug-brand[m[33m)[m fix bug import data brand
+[31m|[m [32m|[m[32m/[m  
+[31m|[m *   [33m975e644[m Merge pull request #15 from nrlsalsabl/project-page-update
+[31m|[m [34m|[m[35m\[m  
+[31m|[m [34m|[m * [33m67564ac[m add keuntungan on project page
+[31m|[m [34m|[m[34m/[m  
+[31m|[m * [33md0fc688[m Merge pull request #14 from nrlsalsabl/spending-page
+[31m|[m[31m/[m[1;31m|[m 
+[31m|[m * [33mfbd2030[m[33m ([m[1;31morigin/spending-page[m[33m)[m add edit user and add migration (run migrate to update database structure)
+[31m|[m[31m/[m  
+*   [33mc3ec334[m Merge pull request #13 from nrlsalsabl/fix-talent-page
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33m2a1d95c[m fix bug talent page
+[1;32m|[m[1;32m/[m  
+*   [33m0fc09f7[m Merge pull request #12 from nrlsalsabl/update-rafi
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33m746ef42[m[33m ([m[1;31morigin/update-rafi[m[33m)[m add: import kpi intern and staff
+[1;34m|[m * [33m1fbb6e1[m fix: modal project
+* [1;35m|[m [33m5d8a935[m Merge pull request #11 from nrlsalsabl/update-rafi
+[1;36m|[m[1;35m\[m[1;35m|[m 
+[1;36m|[m * [33m62f248d[m fix: import agency and brand
+* [31m|[m [33mc57d2fc[m Merge pull request #10 from nrlsalsabl/update-rafi
+[32m|[m[31m\[m[31m|[m 
+[32m|[m * [33md478040[m fix: revisi
+* [33m|[m [33m6afa598[m Merge pull request #9 from nrlsalsabl/update-rafi
+[34m|[m[33m\[m[33m|[m 
+[34m|[m * [33m5f5d4b5[m fix import intern
+* [35m|[m [33m1696d69[m Merge pull request #8 from nrlsalsabl/update-rafi
+[36m|[m[35m\[m[35m|[m 
+[36m|[m * [33m4c905f0[m fix import staff and talent
+* [1;31m|[m [33m425f007[m Merge pull request #7 from nrlsalsabl/update-rafi
+[1;32m|[m[1;31m\[m[1;31m|[m 
+[1;32m|[m * [33m01884c3[m add import project and fix import talent
+[1;32m|[m *   [33macd702b[m Merge pull request #6 from nrlsalsabl/dev
+[1;32m|[m [1;34m|[m[1;32m\[m  
+[1;32m|[m [1;34m|[m[1;32m/[m  
+[1;32m|[m[1;32m/[m[1;34m|[m   
+* [1;34m|[m   [33m7b4c8cd[m Merge pull request #5 from nrlsalsabl/update-import-category
+[1;36m|[m[31m\[m [1;34m\[m  
+[1;36m|[m * [1;34m|[m [33m01bd6eb[m[33m ([m[1;31morigin/update-import-category[m[33m)[m fix bug delete category
+[1;36m|[m * [1;34m|[m [33m71f1979[m fix bug import category
+[1;36m|[m[1;36m/[m [1;34m/[m  
+* [1;34m|[m   [33m60a8af0[m Merge pull request #4 from nrlsalsabl/update-pendapatan-pengeluaran
+[32m|[m[33m\[m [1;34m\[m  
+[32m|[m * [1;34m\[m   [33m32d02c2[m[33m ([m[1;31morigin/update-pendapatan-pengeluaran[m[33m)[m Merge branch 'dev' into update-pendapatan-pengeluaran
+[32m|[m [34m|[m[32m\[m [1;34m\[m  
+[32m|[m [34m|[m[32m/[m [1;34m/[m  
+[32m|[m[32m/[m[34m|[m [1;34m|[m   
+* [34m|[m [1;34m|[m   [33md66387c[m Merge pull request #3 from nrlsalsabl/update-rafi
+[36m|[m[1;34m\[m [34m\[m [1;34m\[m  
+[36m|[m [1;34m|[m [34m|[m[1;34m/[m  
+[36m|[m [1;34m|[m[1;34m/[m[34m|[m   
+[36m|[m * [34m|[m [33md8f8541[m add import export category
+* [1;31m|[m [34m|[m [33mca8e553[m Merge pull request #2 from nrlsalsabl/master
+[1;32m|[m[1;31m\[m[1;31m|[m [34m|[m 
+[1;32m|[m * [34m|[m [33m7b2eda2[m add import export position, and fix import export talent
+[1;32m|[m [1;33m|[m * [33mb1a08ec[m add import category
+[1;32m|[m [1;33m|[m * [33m171e918[m add import position
+[1;32m|[m [1;33m|[m * [33m4d52e40[m add filter month
+[1;32m|[m [1;33m|[m[1;32m/[m  
+[1;32m|[m[1;32m/[m[1;33m|[m   
+* [1;33m|[m   [33ma86fe4f[m Merge branch 'dev' of https://github.com/nrlsalsabl/dashboard-fyp into dev
+[1;34m|[m[1;35m\[m [1;33m\[m  
+[1;34m|[m * [1;33m\[m   [33md9781bd[m Merge pull request #1 from nrlsalsabl/master
+[1;34m|[m [1;33m|[m[31m\[m [1;33m\[m  
+[1;34m|[m [1;33m|[m [31m|[m[1;33m/[m  
+[1;34m|[m [1;33m|[m[1;33m/[m[31m|[m   
+[1;34m|[m * [31m|[m [33mdf6e2b5[m fix: import talent
+* [31m|[m [31m|[m [33m9dde316[m task 21
+* [31m|[m [31m|[m [33ma436ec0[m task 21
+[31m|[m [31m|[m[31m/[m  
+[31m|[m[31m/[m[31m|[m   
+* [31m|[m [33m8d0f99d[m task 39
+[31m|[m[31m/[m  
+* [33me945b36[m edit for project
