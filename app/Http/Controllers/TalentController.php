@@ -126,9 +126,11 @@ class TalentController extends Controller
     }
 
     public function export()
-    {
-        return Excel::download(new TalentExport, 'talent.xlsx');
-    }
+{
+    $filters = request()->query();
+    return Excel::download(new TalentExport($filters), 'talents.xlsx');
+}
+
 
     public function registrasi()
     {
@@ -213,33 +215,6 @@ class TalentController extends Controller
         if ($request->file('photo')) {
             $validatedData['photo'] = $request->file('photo')->store('images/talents');
         }
-
-
-        // // CEK NILAI DARI staff_id
-        // if ($request->staff_id == 'input_manual') {
-
-        //     // Ambil data nama staff dari request
-        //     $staffName = $request->manual_staff_name;
-
-        //     // Simpan data staff baru
-        //     $save = Staff::create([
-        //         'name' => $staffName,
-        //         'email' => '',
-        //         'phone' => '',
-        //         'place' => '',
-        //         'birth' => null,
-        //         'village_id' => null,
-        //         'address' => '',
-        //         'position_id' => 1,
-        //         'photo' => '', // 1MB Max
-        //         'instagram' => '',
-        //         'linkedin' => ''
-        //     ]);
-
-        //     // Tambahkan ID staff yang baru ditambahkan ke data yang divalidasi
-        //     $validatedData['staff_id'] = $save->id;
-
-        // }
 
         $talent = Talent::create($validatedData);
 

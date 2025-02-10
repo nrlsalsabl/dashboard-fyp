@@ -58,7 +58,7 @@ Route::middleware(['role_or_permission:master', 'prevent-back'])->group(function
     Route::post('/kpi-staff-import', [IndicatorController::class, 'import']);
     Route::get('/exportIntern', [InternController::class, 'export']);
     Route::get('/exportStaff', [StaffController::class, 'export']);
-    Route::get('/exportTalent', [TalentController::class, 'export']);
+    Route::get('/exportTalent', [TalentController::class, 'export'])->name('export.talent');
     Route::get('/exportBrand', [BrandController::class, 'export']);
     Route::get('/exportAgency', [AgencyController::class, 'export']);
     Route::get('/exportUsersList', [UserListController::class, 'export']);

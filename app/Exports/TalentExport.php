@@ -4,50 +4,56 @@ namespace App\Exports;
 
 use App\Models\Talent;
 use PhpOffice\PhpSpreadsheet\Cell\Cell;
+use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithMapping;
-use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
 use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 
 class TalentExport extends DefaultValueBinder implements FromQuery, WithHeadings, WithMapping, WithCustomValueBinder
 {
-    public function bindValue(Cell $cell, $value)
+    protected $filters;
+
+    public function __construct($filters = [])
     {
-        if ($cell->getColumn() === 'AA' || $cell->getColumn() === 'AD') {
-            $cell->setValueExplicit($value, DataType::TYPE_STRING);
-
-            return true;
-        }
-
-        // else return default behavior
-        return parent::bindValue($cell, $value);
+        $this->filters = $filters;
     }
 
-    /**
-    * @return \Illuminate\Support\Collection
-    */
     public function query()
     {
-        return Talent::query();
+        return Talent::query()
+            ->when($this->filters['search'] ?? null, function ($query, $search) {
+                $query->where('name', 'like', "%$search%");
+            })
+            ->when($this->filters['category'] ?? null, function ($query, $category) {
+                $query->whereHas('categories', function ($q) use ($category) {
+                    $q->where('name', $category);
+                });
+            })
+            ->when($this->filters['mcn'] ?? null, function ($query, $mcn) {
+                $query->where('mcn_tiktok', $mcn);
+            })
+            ->when($this->filters['staff'] ?? null, function ($query, $staff) {
+                $query->where('staff_id', $staff);
+            })
+            ->when($this->filters['bulan'] ?? null, function ($query, $bulan) {
+                $query->whereMonth('date', $bulan);
+            });
     }
 
     public function map($talent): array
     {
+        static $index = 1;
         return [
-            $talent->id,
+            $index++,
             $talent->name,
             $talent->email,
             $talent->phone,
             $talent->place,
             $talent->date,
-            $talent->village 
-                ? $talent->village?->province?->name 
-                : $talent->domicile,
-            $talent->categories->isNotEmpty()
-                ? $talent->categories->implode('name', ', ') 
-                : $talent->category,
+            $talent->village ? $talent->village?->province?->name : $talent->domicile,
+            $talent->categories->isNotEmpty() ? $talent->categories->implode('name', ', ') : $talent->category,
             $talent->engagement,
             $talent->instagram,
             $talent->finstagram == 0 ? '0' : $talent->finstagram,
@@ -64,9 +70,7 @@ class TalentExport extends DefaultValueBinder implements FromQuery, WithHeadings
             $talent->rate_yt,
             $talent->rate_event,
             $talent->talent_exclusive ? 'Ya' : 'Tidak',
-            $talent->staff
-            ? $talent->staff?->name
-            : $talent->pic,
+            $talent->staff ? $talent->staff?->name : $talent->pic,
             $talent->account_name,
             $talent->account_number,
             $talent->bank_name,
@@ -108,10 +112,10 @@ class TalentExport extends DefaultValueBinder implements FromQuery, WithHeadings
             'Talent Exclusive',
             'PIC',
             'Nama Penerima Rekening',
-            'No Rekening', // AA
+            'No Rekening',
             'Nama Bank',
             'NPWP',
-            'NIK', // AD
+            'NIK',
             'Shopee Affiliate',
             'Tiktok Affiliate',
             'MCN TIKTOK',
