@@ -110,6 +110,10 @@ class ProjectController extends Controller
     {
         $project = Project::findOrFail($id);
         $agency = Agency::orderBy('name')->get(); // ambil agency urut abjad
+        $staffs = Staff::orderBy('name')->get();
+        $brands = Brand::orderBy('name')->get();
+        $talents = Talent::orderBy('name')->get();
+        $scopes = Scope::orderBy('name')->get();
         return view('project.edit', compact('project', 'agency'));
     }
 
@@ -135,13 +139,9 @@ class ProjectController extends Controller
             'Keterangan' => 'required',
         ]);
 
-
-
-
-
         if ($validatedData) {
             $date = $request->date . '-01';
-            $data = [
+            $validatedData = [
                 'name' => $request->name,
                 'staff_id' => $request->staff_id,
                 'brand_id' => $request->brand_id,
@@ -158,7 +158,7 @@ class ProjectController extends Controller
             ];
         }
 
-        Project::where('id', $project->id)->update($data);
+        Project::where('id', $project->id)->update($validatedData);
 
 
 

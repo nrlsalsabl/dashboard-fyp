@@ -13,7 +13,7 @@ class UserListController extends Controller
 {
     public function index()
     {
-        if(request('name')){
+        if (request('name')) {
             User::firstWhere('id', request(('name')));
         }
 
@@ -48,13 +48,13 @@ class UserListController extends Controller
             'role' => 'required'
         ]);
 
-        if ($request->password == 'password'){
+        if ($request->password == 'password') {
             $validatedData['password'] = bcrypt($request->password);
         }
 
-        if($request->file('photo')) {
+        if ($request->file('photo')) {
             $validatedData['photo'] = $request->file('photo')->store('images/users');
-        } 
+        }
 
         $user = User::create($validatedData);
         $user->assignRole($request->role);
@@ -78,6 +78,21 @@ class UserListController extends Controller
             return redirect('/users-list')->with('error', 'Data cannot Delete');
         }
     }
+
+    public function update(Request $request, User $user)
+    {
+        // Validasi status
+        $validatedData = $request->validate([
+            'status' => 'required|in:0,1',  // Status hanya boleh 0 atau 1
+        ]);
+
+        // Update status pengguna
+        $user->status = $request->status;
+        $user->save();
+
+        return redirect('/users-list')->with('success', 'User status has been updated!');
+    }
+
 
     public function export()
     {

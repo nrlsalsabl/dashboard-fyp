@@ -34,7 +34,7 @@
                 @csrf
                 <div class="mb-4">
                     <label class="block mb-1 text-white" for="email">Email-Address</label>
-                    <input id="email" type="email" name="email" placeholder="Email Address" class="py-2 px-3 border border-gray-300 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full @error('email') disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 @enderror" required="" autofocus value="{{ old('email') }} "/>
+                    <input id="email" type="email" name="email" placeholder="Email Address" class="py-2 px-3 border border-gray-300 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full @error('email') disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 @enderror" required="" autofocus value="{{ old('email') }} "/>
                     @error('email')
                         <p class="mt-2 peer-invalid:visible text-pink-600 text-sm">
                             {{ $message }}
