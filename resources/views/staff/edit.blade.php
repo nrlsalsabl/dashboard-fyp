@@ -53,12 +53,17 @@
                                 placeholder="johndoe@gmail.com" required>
                         </div>
                         <div class="col-span-6">
-                                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Karyawan</label>
-                                <select name="status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="1" {{ old('status', $staff->status) == 1 ? 'selected' : '' }}>Aktif</option>
-                                    <option value="0" {{ old('status', $staff->status) == 0 ? 'selected' : '' }}>Tidak Aktif</option>
-                                </select>
-                            </div>
+                            <label for="status"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status
+                                Karyawan</label>
+                            <select name="status" id="status"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="1" {{ old('status', $staff->status) == 1 ? 'selected' : '' }}>Aktif
+                                </option>
+                                <option value="0" {{ old('status', $staff->status) == 0 ? 'selected' : '' }}>Tidak
+                                    Aktif</option>
+                            </select>
+                        </div>
                         <div class="col-span-6 sm:col-span-3">
                             <label for="place"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat

@@ -21,7 +21,18 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $tables = Project::latest()->filter(request(['search', 'name', 'brand', 'staff', 'talent', 'bulan', 'tahun']))->paginate(10)->withQueryString();
+        $status = [
+            (object) ['id' => 1, 'name' => 'Ongoing'],
+            (object) ['id' => 2, 'name' => 'Completed'],
+            (object) ['id' => 3, 'name' => 'Not Completed'],
+        ];
+
+        $tables = Project::latest()->filter(request(['search', 'name', 'brand', 'staff', 'talent', 'bulan', 'tahun', 'link', 'status']))
+            ->when(request('status'), function ($query) {
+                return $query->where('status', request('status'));
+            })
+            ->paginate(10)
+            ->withQueryString();
         $staff = Staff::all();
         $brand = Brand::orderBy('name')->get();
         $talents = Talent::all();
@@ -38,8 +49,11 @@ class ProjectController extends Controller
             'talents' => $talents,
             'agency' => $agency,
             'scopes' => $scopes,
+            'link' => 'link',
+            'status' => $status, // Mengirim status sebagai array atau objek
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -71,11 +85,13 @@ class ProjectController extends Controller
             'tgl_pelunasan_brand' => 'required',
             'Keterangan' => 'required',
             'link' => 'nullable|url',
+            'status' => 'nullable|in: 1,2,3',
         ]);
 
         if ($validatedData) {
             $date = $request->date . '-01';
-            $data = [
+            $status = $request->status ?: 2;
+            $validatedData = [
                 'name' => $request->name,
                 'staff_id' => $request->staff_id,
                 'brand_id' => $request->brand_id,
@@ -90,10 +106,11 @@ class ProjectController extends Controller
                 'tgl_pelunasan_brand' => $request->tgl_pelunasan_brand,
                 'Keterangan' => $request->Keterangan,
                 'link' => $request->link,
+                'status' => $status,
             ];
         }
 
-        Project::create($data);
+        Project::create($validatedData);
         return redirect('/project')->with('success', 'Data has been added!');
     }
 
@@ -140,8 +157,10 @@ class ProjectController extends Controller
             'tgl_pelunasan_brand' => 'required',
             'Keterangan' => 'required',
             'link' => 'nullable|url',
-            'status' => 'required|in:ongoing,completed,not_completed',
+            'status' => 'nullable|in:1,2,3',
         ]);
+
+        $status = $request->status ?: 2;
 
         if ($validatedData) {
             $date = $request->date . '-01';

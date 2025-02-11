@@ -126,10 +126,10 @@ class TalentController extends Controller
     }
 
     public function export()
-{
-    $filters = request()->query();
-    return Excel::download(new TalentExport($filters), 'talents.xlsx');
-}
+    {
+        $filters = request()->query();
+        return Excel::download(new TalentExport($filters), 'talents.xlsx');
+    }
 
 
     public function registrasi()

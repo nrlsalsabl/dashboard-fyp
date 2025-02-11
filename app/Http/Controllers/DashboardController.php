@@ -79,10 +79,9 @@ class DashboardController extends Controller
         $internCount = Intern::count();
 
 
-
         $currentMonth = Carbon::now()->month;
         $currentYear = Carbon::now()->year;
-        $years = Earning::selectRaw('YEAR(date) as year')
+        $years = Spending::selectRaw('YEAR(date) as year')
             ->distinct()
             ->orderBy('year', 'desc')
             ->pluck('year');
@@ -121,7 +120,7 @@ class DashboardController extends Controller
             'internData' => $internData,
             'staffData' => $staffData,
             // 'earnings' => Earning::where('status', 'selesai')->latest()->paginate(5),
-            // 'spendings' => Spending::latest()->paginate(5)
+            // 'spendings' => Spending::latest()->paginate(5),
             // 'spendings' => Spending::where('status', 'selesai')->latest()->paginate(5),
             'selectedYear' => $year,
             'totalEarnings' => $totalEarnings,

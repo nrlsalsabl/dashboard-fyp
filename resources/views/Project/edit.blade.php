@@ -113,7 +113,7 @@
                                         {{ $item->name }}
                                     </option>
                                 @endforeach
-                            </select> 
+                            </select>
                             @error('talent_id')
                                 <div class="col-span-3">
                                     <span class="text-sm text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -244,26 +244,36 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="col-span-6">
-    <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Project</label>
-    <select name="status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        <option value="ongoing" {{ old('status', $project->status) == 'ongoing' ? 'selected' : '' }}>Ongoing</option>
-        <option value="completed" {{ old('status', $project->status) == 'completed' ? 'selected' : '' }}>Completed</option>
-        <option value="not_completed" {{ old('status', $project->status) == 'not_completed' ? 'selected' : '' }}>Not Completed</option>
-    </select>
-</div>
+
+
+                        <div class="col-span-3">
+                            <label for="status_id"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                            <select name="status" id="status_id" class="form-control">
+                                <option value="1" {{ $project->status == 1 ? 'selected' : '' }}>Ongoing</option>
+                                <option value="2" {{ $project->status == 2 ? 'selected' : '' }}>Completed
+                                </option>
+                                <option value="3" {{ $project->status == 3 ? 'selected' : '' }}>Not Completed
+                                </option>
+                            </select>
+                        </div>
+
+
+
 
                         <div class="col-span-6">
-                        <label for="link" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link Project</label>
-                        <input type="text" name="link" id="link"
-                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            value="{{ old('link', $project->link ?? '') }}">
-                        @error('link')
-                        <div class="col-span-3">
-                            <span class="text-sm text-red-600 dark:text-red-400">{{ $message }}</span>
+                            <label for="name"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link
+                                Project</label>
+                            <input type="text" name="link" id="link"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                value="{{ old('link', $project->link ?? '') }}">
+                            @error('link')
+                                <div class="col-span-3">
+                                    <span class="text-sm text-red-600 dark:text-red-400">{{ $message }}</span>
+                                </div>
+                            @enderror
                         </div>
-                        @enderror
-                    </div>
 
 
                     </div>

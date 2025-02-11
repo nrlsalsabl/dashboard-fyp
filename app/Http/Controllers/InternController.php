@@ -126,9 +126,10 @@ class InternController extends Controller
         return redirect('/intern')->with('success', 'Data has been deleted!');
     }
 
-    public function export() 
+    public function export()
     {
-        return Excel::download(new InternExport, 'intern.xlsx');
+        $filters = request()->query();
+        return Excel::download(new InternExport($filters), 'intern.xlsx');
     }
 
     public function import(Request $request)

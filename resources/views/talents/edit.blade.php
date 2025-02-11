@@ -39,85 +39,118 @@
 
                         {{-- NAME --}}
                         <div class="col-span-6 ">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                            <input type="text" value="{{ $talent->name }}" name="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="name"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                            <input type="text" value="{{ $talent->name }}" name="name"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
-                            
+
 
                         {{-- EMAIL --}}
                         <div class="col-span-4">
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                            <input type="email" value="{{ $talent->email }}" name="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="email"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                            <input type="email" value="{{ $talent->email }}" name="email"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
 
                         {{-- PHONE --}}
                         <div class="col-span-2">
-                            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone</label>
-                            <input type="text" value="{{ $talent->phone }}" name="phone" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="phone"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone</label>
+                            <input type="text" value="{{ $talent->phone }}" name="phone"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
 
 
                         {{-- TEMPAT TANGGAL LAHIR --}}
                         <div class="col-span-4">
-                            <label for="place" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir</label>
-                            <input type="text" value="{{ $talent->place }}" name="place" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="place"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat
+                                Lahir</label>
+                            <input type="text" value="{{ $talent->place }}" name="place"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
 
                         <div class="col-span-2">
-                            <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir</label>
-                            <input type="date" value="{{ $talent->date }}" name="date" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="date"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
+                                Lahir</label>
+                            <input type="date" value="{{ $talent->date }}" name="date"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
 
 
                         {{-- ALAMAT DOMISILI --}}
                         {{-- Provinsi --}}
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="province-edit-{{ $talent->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provinsi</label>
-                            <select class="province-edit-{{ $talent->id }} shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="province_id" id="province-edit-{{ $talent->id }}" required>
+                            <label for="province-edit-{{ $talent->id }}"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provinsi</label>
+                            <select
+                                class="province-edit-{{ $talent->id }} shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                name="province_id" id="province-edit-{{ $talent->id }}" required>
                                 @foreach ($provinces as $province)
-                                    <option value="{{ $province->id }}" @selected(old('province_id', $talent->village?->province?->id) == $province->id)>{{ $province->name }}</option>
+                                    <option value="{{ $province->id }}" @selected(old('province_id', $talent->village?->province?->id) == $province->id)>
+                                        {{ $province->name }}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         {{-- Kabupaten/Kota --}}
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="regency-edit-{{ $talent->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kabupaten/Kota</label>
-                            <select class="regency-edit-{{ $talent->id }} shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="regency_id" id="regency-edit-{{ $talent->id }}" disabled required>
+                            <label for="regency-edit-{{ $talent->id }}"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kabupaten/Kota</label>
+                            <select
+                                class="regency-edit-{{ $talent->id }} shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                name="regency_id" id="regency-edit-{{ $talent->id }}" disabled required>
                                 <option value="">Pilih Kabupaten/Kota</option>
                             </select>
                         </div>
 
                         {{-- Kecamatan --}}
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="district-edit-{{ $talent->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan</label>
-                            <select class="district-edit-{{ $talent->id }} shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="district_id" id="district-edit-{{ $talent->id }}" disabled required>
+                            <label for="district-edit-{{ $talent->id }}"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan</label>
+                            <select
+                                class="district-edit-{{ $talent->id }} shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                name="district_id" id="district-edit-{{ $talent->id }}" disabled required>
                                 <option value="">Pilih Kecamatan</option>
                             </select>
                         </div>
 
                         {{-- Desa/Kelurahan --}}
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="village-edit-{{ $talent->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Desa/Kelurahan</label>
-                            <select class="village-edit-{{ $talent->id }} shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="village_id" id="village-edit-{{ $talent->id }}" disabled required>
+                            <label for="village-edit-{{ $talent->id }}"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Desa/Kelurahan</label>
+                            <select
+                                class="village-edit-{{ $talent->id }} shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                name="village_id" id="village-edit-{{ $talent->id }}" disabled required>
                                 <option value="">Pilih Desa/Kelurahan</option>
                             </select>
                         </div>
 
 
                         <div class="col-span-6">
-                            <label for="engagement" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Engagement Rate</label>
-                            <input type="text" value="{{ $talent->engagement }}" name="engagement" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="engagement"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Engagement
+                                Rate</label>
+                            <input type="text" value="{{ $talent->engagement }}" name="engagement"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
 
                         {{-- KATEGORI --}}
                         <div class="col-span-6">
-                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
+                            <label for="category"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
                             <div class="grid grid-cols-5 gap-4">
                                 @foreach ($categories as $category)
                                     <div class="flex items-center me-4">
-                                        <input id="category-{{ $category->id }}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" type="checkbox" name="category_id[]" value="{{ $category->id }}" @if($talent->categories->contains($category)) checked @endif>
-                                        <label for="category-{{ $category->id }}" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">{{ $category->name }}</label>
+                                        <input id="category-{{ $category->id }}"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                            type="checkbox" name="category_id[]" value="{{ $category->id }}"
+                                            @if ($talent->categories->contains($category)) checked @endif>
+                                        <label for="category-{{ $category->id }}"
+                                            class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">{{ $category->name }}</label>
                                     </div>
                                 @endforeach
                             </div>
@@ -127,124 +160,197 @@
                         {{-- INFORMASI INSTAGRAM --}}
                         <h1 class="text-xl font-semibold dark:text-white">Instagram</h1>
                         <div class="col-span-6">
-                            <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username Instagram</label>
-                            <input type="text" value="{{ $talent->instagram }}" name="instagram" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="date"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username
+                                Instagram</label>
+                            <input type="text" value="{{ $talent->instagram }}" name="instagram"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-2">
-                            <label for="finstagram" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Follower Instagram</label>
-                            <input type="text" value="{{ $talent->finstagram }}" name="finstagram" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="finstagram"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Follower
+                                Instagram</label>
+                            <input type="text" value="{{ $talent->finstagram }}" name="finstagram"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-2">
-                            <label for="rate_igs" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Instagram Story</label>
-                            <input type="text" value="{{ $talent->rate_igs }}" name="rate_igs" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="rate_igs"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Instagram
+                                Story</label>
+                            <input type="text" value="{{ $talent->rate_igs }}" name="rate_igs"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-2">
-                            <label for="rate_igf" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Instagram Feed</label>
-                            <input type="text" value="{{ $talent->rate_igf }}" name="rate_igf" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="rate_igf"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Instagram
+                                Feed</label>
+                            <input type="text" value="{{ $talent->rate_igf }}" name="rate_igf"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-2">
-                            <label for="rate_igr" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Instagram Reels</label>
-                            <input type="text" value="{{ $talent->rate_igr }}" name="rate_igr" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="rate_igr"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Instagram
+                                Reels</label>
+                            <input type="text" value="{{ $talent->rate_igr }}" name="rate_igr"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-2">
-                            <label for="rate_igl" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Instagram Live</label>
-                            <input type="text" value="{{ $talent->rate_igl }}" name="rate_igl" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="rate_igl"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Instagram
+                                Live</label>
+                            <input type="text" value="{{ $talent->rate_igl }}" name="rate_igl"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-2"></div>
 
                         {{-- INFORMASI TIKTIK --}}
                         <h1 class="text-xl font-semibold dark:text-white">Tiktok</h1>
                         <div class="col-span-6">
-                            <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username TikTok</label>
-                            <input type="text" value="{{ $talent->tiktok }}" name="tiktok" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="date"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username
+                                TikTok</label>
+                            <input type="text" value="{{ $talent->tiktok }}" name="tiktok"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-2">
-                            <label for="ftiktok" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Follower Tiktok</label>
-                            <input type="text" value="{{ $talent->ftiktok }}" name="ftiktok" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="ftiktok"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Follower
+                                Tiktok</label>
+                            <input type="text" value="{{ $talent->ftiktok }}" name="ftiktok"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-2">
-                            <label for="rate_ttf" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Tiktok Feed</label>
-                            <input type="text" value="{{ $talent->rate_ttf }}" name="rate_ttf" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="rate_ttf"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Tiktok
+                                Feed</label>
+                            <input type="text" value="{{ $talent->rate_ttf }}" name="rate_ttf"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-2">
-                            <label for="rate_ttl" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Tiktok Live</label>
-                            <input type="text" value="{{ $talent->rate_ttl }}" name="rate_ttl" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="rate_ttl"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Tiktok
+                                Live</label>
+                            <input type="text" value="{{ $talent->rate_ttl }}" name="rate_ttl"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
 
                         {{-- Informasi Youtube --}}
                         <h1 class="text-xl font-semibold dark:text-white">Youtube</h1>
                         <div class="col-span-6">
-                            <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Youtube</label>
-                            <input type="text" value="{{ $talent->youtube }}" name="youtube" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="date"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Youtube</label>
+                            <input type="text" value="{{ $talent->youtube }}" name="youtube"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-2">
-                            <label for="syoutube" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subscriber Youtube</label>
-                            <input type="text" value="{{ $talent->syoutube }}" name="syoutube" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="syoutube"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subscriber
+                                Youtube</label>
+                            <input type="text" value="{{ $talent->syoutube }}" name="syoutube"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-2">
-                            <label for="rate_yt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Youtube</label>
-                            <input type="text" value="{{ $talent->rate_yt }}" name="rate_yt" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="rate_yt"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate
+                                Youtube</label>
+                            <input type="text" value="{{ $talent->rate_yt }}" name="rate_yt"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-2">
-                            <label for="rate_event" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Event Attendance</label>
-                            <input type="text" value="{{ $talent->rate_event }}" name="rate_event" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="rate_event"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rate Event
+                                Attendance</label>
+                            <input type="text" value="{{ $talent->rate_event }}" name="rate_event"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
 
                         {{-- Informasi Data Payment --}}
                         <h1 class="text-xl font-semibold dark:text-white">Data Payment</h1>
                         <div class="col-span-6">
-                            <label for="account_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Penerima Rekening</label>
-                            <input type="text" value="{{ $talent->account_name }}" name="account_name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="account_name"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Penerima
+                                Rekening</label>
+                            <input type="text" value="{{ $talent->account_name }}" name="account_name"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-full sm:col-span-4">
-                            <label for="account_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Rekening</label>
-                            <input type="text" value="{{ $talent->account_number }}" name="account_number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="account_number"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor
+                                Rekening</label>
+                            <input type="text" value="{{ $talent->account_number }}" name="account_number"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-full sm:col-span-2">
-                            <label for="bank_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Bank</label>
-                            <input type="text" value="{{ $talent->bank_name }}" name="bank_name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="bank_name"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Bank</label>
+                            <input type="text" value="{{ $talent->bank_name }}" name="bank_name"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-6">
-                            <label for="npwp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NPWP</label>
-                            <input type="text" value="{{ $talent->npwp }}" name="npwp" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="npwp"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NPWP</label>
+                            <input type="text" value="{{ $talent->npwp }}" name="npwp"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
                         <div class="col-span-6">
-                            <label for="nik" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
-                            <input type="text" value="{{ $talent->nik }}" name="nik" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <label for="nik"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
+                            <input type="text" value="{{ $talent->nik }}" name="nik"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </div>
 
 
                         {{-- INFORMASI LAINNYA --}}
                         <h1 class="text-xl font-semibold dark:text-white">Lain Lain</h1>
+                        
+                        
+                        
                         <div class="col-span-6">
-                            <label for="rate_event" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PIC</label>
+                            <label for="rate_event"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PIC</label>
                             <div class="relative search_pic">
                                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                     </svg>
                                 </div>
-                                <input type="search" @if(old('staff_id') == 'input_manual') disabled @endif name="staff_id_display" value="{{ old('staff_id_display') }}" class="staff_id block w-full ps-10 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Cari PIC..." />
-                                <div class="dropdown absolute z-50 overflow-hidden w-full bg-white border border-gray-300 rounded-lg shadow-lg dark:bg-gray-700 dark:border-gray-600 mt-1 hidden">
+                                <input type="search" @if (old('staff_id') == 'input_manual') disabled @endif
+                                    name="staff_id_display" value="{{ old('staff_id_display') }}"
+                                    class="staff_id block w-full ps-10 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                    placeholder="Cari PIC..." />
+                                <div
+                                    class="dropdown absolute z-50 overflow-hidden w-full bg-white border border-gray-300 rounded-lg shadow-lg dark:bg-gray-700 dark:border-gray-600 mt-1 hidden">
                                 </div>
                                 <input type="hidden" name="staff_id" value="{{ old('staff_id') }}">
                                 @error('staff_id')
                                     <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
                                 @enderror
                                 <div class="spinner absolute right-10 top-4 hidden">
-                                    <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291l-3.707 3.707c-4.019-4.02-4.019-10.537 0-14.556L6 7.291a8.003 8.003 0 010 10.582z"></path>
+                                    <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10"
+                                            stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor"
+                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291l-3.707 3.707c-4.019-4.02-4.019-10.537 0-14.556L6 7.291a8.003 8.003 0 010 10.582z">
+                                        </path>
                                     </svg>
                                 </div>
                             </div>
                         </div>
-                        
+
+
+
                         <div class="col-span-6">
-                            <label for="rate_event" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Talent Exclusive</label>
-                            <select class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="talent_exclusive">
+                            <label for="rate_event"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Talent
+                                Exclusive</label>
+                            <select
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                name="talent_exclusive">
                                 <option selected value="{{ $talent->talent_exclusive }}">
-                                    @if($talent->talent_exclusive == 1)
+                                    @if ($talent->talent_exclusive == 1)
                                         Ya
                                     @else
                                         Tidak
@@ -257,10 +363,14 @@
 
 
                         <div class="col-span-2">
-                            <label for="shopee_affiliate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Shopee Affiliate</label>
-                            <select class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="shopee_affiliate">
+                            <label for="shopee_affiliate"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Shopee
+                                Affiliate</label>
+                            <select
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                name="shopee_affiliate">
                                 <option selected value="{{ $talent->shopee_affiliate }}">
-                                    @if($talent->shopee_affiliate == 1)
+                                    @if ($talent->shopee_affiliate == 1)
                                         Ya
                                     @else
                                         Tidak
@@ -271,10 +381,14 @@
                             </select>
                         </div>
                         <div class="col-span-2">
-                            <label for="tiktok_affiliate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tiktok Affiliate</label>
-                            <select class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="tiktok_affiliate">
+                            <label for="tiktok_affiliate"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tiktok
+                                Affiliate</label>
+                            <select
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                name="tiktok_affiliate">
                                 <option selected value="{{ $talent->tiktok_affiliate }}">
-                                    @if($talent->tiktok_affiliate == 1)
+                                    @if ($talent->tiktok_affiliate == 1)
                                         Ya
                                     @else
                                         Tidak
@@ -285,10 +399,13 @@
                             </select>
                         </div>
                         <div class="col-span-2">
-                            <label for="mcn_tiktok" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">MCN Tiktok</label>
-                            <select class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="mcn_tiktok">
+                            <label for="mcn_tiktok"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">MCN Tiktok</label>
+                            <select
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                name="mcn_tiktok">
                                 <option selected value="{{ $talent->mcn_tiktok }}">
-                                    @if($talent->mcn_tiktok == 1)
+                                    @if ($talent->mcn_tiktok == 1)
                                         Ya
                                     @else
                                         Tidak
@@ -327,3 +444,6 @@
         </div>
     </div>
 </div>
+
+
+

@@ -213,17 +213,41 @@
                                 </div>
                             @enderror
                         </div>
+
+
+
+                        <div class="col-span-3">
+                            <label for="status_id"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                            <select name="status_id" id="status_id"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                @foreach ($status as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('status_id')
+                                <div class="col-span-3">
+                                    <span class="text-sm text-red-600 dark:text-red-400">{{ $message }}</span>
+                                </div>
+                            @enderror
+                        </div>
+
+
+
+
                         <div class="col-span-6">
-    <label for="link" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link Project</label>
-    <input type="text" name="link" id="link"
-        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-        value="{{ old('link', $model->link ?? '') }}">
-    @error('link')
-        <div class="col-span-3">
-            <span class="text-sm text-red-600 dark:text-red-400">{{ $message }}</span>
-        </div>
-    @enderror
-</div>
+                            <label for="link"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link
+                                Project</label>
+                            <input type="text" name="link" id="link"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                value="{{ old('link', $model->link ?? '') }}">
+                            @error('link')
+                                <div class="col-span-3">
+                                    <span class="text-sm text-red-600 dark:text-red-400">{{ $message }}</span>
+                                </div>
+                            @enderror
+                        </div>
 
 
                     </div>

@@ -101,4 +101,3 @@
     @include('position.create')
     @include('position.import')
 @endsection
-
