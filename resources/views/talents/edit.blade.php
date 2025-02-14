@@ -306,24 +306,16 @@
 
 
                         <div class="col-span-6">
-                            <label for="rate_event"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PIC</label>
-                            <div class="relative search_pic">
-                                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                                    </svg>
-                                </div>
-                                <input type="search" @if (old('staff_id') == 'input_manual') disabled @endif
-                                    name="staff_id_display" value="{{ old('staff_id_display') }}"
-                                    class="staff_id block w-full ps-10 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Cari PIC..." required />
-                                <div
-                                    class="dropdown absolute z-50 overflow-hidden w-full bg-white border border-gray-300 rounded-lg shadow-lg dark:bg-gray-700 dark:border-gray-600 mt-1 hidden">
-                                </div>
-                                <input type="hidden" name="staff_id" value="{{ old('staff_id') }}">
+                                <label for="staff_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PIC</label>
+                                <select name="staff_id" id="staff_id" required
+                                    class="block w-full shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                    <option value=''>Pilih PIC</option>
+                                    @foreach ($staffs as $staff)
+                                    <option value="{{ $staff->id }}" {{ old('staff_id', $talent->staff->id ?? '') == $staff->id ? 'selected' : '' }}>
+                                                {{ $staff->name }}
+                                    </option>
+                                    @endforeach
+                                </select>
                                 @error('staff_id')
                                     <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
                                 @enderror
