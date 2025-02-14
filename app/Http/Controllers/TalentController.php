@@ -40,7 +40,8 @@ class TalentController extends Controller
             'title' => 'Talent',
             'search' => 'talent',
             'tables' => $tables,
-            'staffs' => Staff::has('talents')->get(),
+            // 'staffs' => Staff::has('talents')->get(),
+            'staffs' => Staff::all(),
             'categories' => Category::orderBy('name')->get(),
             'provinces' => Province::all(),
             'export' => 'exportTalent'
