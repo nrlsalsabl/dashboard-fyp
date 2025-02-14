@@ -85,17 +85,15 @@ class DashboardController extends Controller
         $dataSpending = Spending::all();
         $dataEarning = Earning::all();
 
-        if ($dataSpending->count() > 0) {
-            $years = Spending::selectRaw('YEAR(date) as year')
-                ->distinct()
-                ->orderBy('year', 'desc')
-                ->pluck('year');
-        } else {
-            $years = Earning::selectRaw('YEAR(date) as year')
-                ->distinct()
-                ->orderBy('year', 'desc')
-                ->pluck('year');
-        }
+        $yearsSpending = Spending::selectRaw('YEAR(date) as year')
+            ->distinct()
+            ->orderBy('year', 'desc')
+            ->pluck('year');
+
+        $yearsEarning = Earning::selectRaw('YEAR(date) as year')
+            ->distinct()
+            ->orderBy('year', 'desc')
+            ->pluck('year');
 
 
 
@@ -139,7 +137,8 @@ class DashboardController extends Controller
             'totalEarnings' => $totalEarnings,
             'earnings' => $earningsData,
             'spendings' => $spendingsData,
-            'years' => $years,
+            'yearsSpending' => $yearsSpending,
+            'yearsEarning' => $yearsEarning,
             'totalSpendings' => $totalSpendings,
         ]);
     }
