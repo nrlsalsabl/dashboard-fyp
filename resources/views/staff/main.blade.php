@@ -352,7 +352,7 @@
                         $.each(data, function(i, field) {
                             $(`.${fieldName}-edit-${dataId}`).append(
                                 '<option ' + (field.id == currentFieldId ? 'selected' :
-                                '') + ' value="' +
+                                    '') + ' value="' +
                                 field.id +
                                 '">' +
                                 field.name +
