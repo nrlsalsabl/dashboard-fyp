@@ -81,10 +81,23 @@ class DashboardController extends Controller
 
         $currentMonth = Carbon::now()->month;
         $currentYear = Carbon::now()->year;
-        $years = Spending::selectRaw('YEAR(date) as year')
-            ->distinct()
-            ->orderBy('year', 'desc')
-            ->pluck('year');
+
+        $dataSpending = Spending::all();
+        $dataEarning = Earning::all();
+
+        if ($dataSpending->count() > 0) {
+            $years = Spending::selectRaw('YEAR(date) as year')
+                ->distinct()
+                ->orderBy('year', 'desc')
+                ->pluck('year');
+        } else {
+            $years = Earning::selectRaw('YEAR(date) as year')
+                ->distinct()
+                ->orderBy('year', 'desc')
+                ->pluck('year');
+        }
+
+
 
         $earningDataQuery = Earning::with('sows')->filter(request(['bulan', 'tahun']))->where('status', 'selesai');
         if ($request->has('bulan') && $request->has('tahun')) {
