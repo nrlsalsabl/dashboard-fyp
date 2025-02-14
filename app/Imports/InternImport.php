@@ -17,10 +17,10 @@ class InternImport implements ToModel, WithStartRow
     }
 
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function model(array $row)
     {
         $position = Position::firstOrCreate(['name' => $row[4]]);
@@ -31,7 +31,7 @@ class InternImport implements ToModel, WithStartRow
 
         // Cek apakah ada di database dengan atau tanpa "KOTA" atau "KABUPATEN"
         $existingRegency = Regency::whereRaw("REPLACE(REPLACE(name, 'KOTA ', ''), 'KABUPATEN ', '') = ?", [$inputName])
-                        ->first();
+            ->first();
 
         if ($existingRegency) {
             // Jika ditemukan di database, gunakan nama aslinya
@@ -48,18 +48,18 @@ class InternImport implements ToModel, WithStartRow
             // Buat entri baru di database
             $existingRegency = Regency::firstOrCreate(['name' => $finalName]);
         }
-        
+
         return new Intern([
-            'name' => $row[1],   
+            'name' => $row[1],
             'email' => $row[2],
-            'address'=>$row[3],
+            'address' => $row[3],
             'position_id' => $position->id,
             'phone' => $row[5],
             'place' => $row[6],
             'birth' => $row[7],
             'regency_id' => $existingRegency->id,
-            'instagram'=> $row[9],
-            'linkedin'=> $row[10],
+            'instagram' => $row[9],
+            'linkedin' => $row[10],
             'status' => $status,
         ]);
     }
