@@ -149,7 +149,7 @@
                                 </select>
                                 <select name="tahunSpending" id="tahunSpending" onchange="this.form.submit()"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    @foreach ($years as $year)
+                                    @foreach ($yearsSpending as $year)
                                         <option value="{{ $year }}"
                                             {{ (request('tahunSpending') ?? $currentYear) == $year ? 'selected' : '' }}>
                                             {{ $year }}
@@ -246,7 +246,7 @@
                                 </select>
                                 <select name="tahun" id="tahun" onchange="this.form.submit()"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    @foreach ($years as $year)
+                                    @foreach ($yearsEarning as $year)
                                         <option value="{{ $year }}"
                                             {{ (request('tahun') ?? $currentYear) == $year ? 'selected' : '' }}>
                                             {{ $year }}
