@@ -62,7 +62,7 @@ class Regency extends Model
     protected function name(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => ucwords(strtolower($value)),
+            get: fn(string $value) => ucwords(strtolower($value)),
         );
     }
 

@@ -302,9 +302,9 @@
 
                         {{-- INFORMASI LAINNYA --}}
                         <h1 class="text-xl font-semibold dark:text-white">Lain Lain</h1>
-                        
-                        
-                        
+
+
+
                         <div class="col-span-6">
                             <label for="rate_event"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PIC</label>
@@ -319,7 +319,7 @@
                                 <input type="search" @if (old('staff_id') == 'input_manual') disabled @endif
                                     name="staff_id_display" value="{{ old('staff_id_display') }}"
                                     class="staff_id block w-full ps-10 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Cari PIC..." />
+                                    placeholder="Cari PIC..." required />
                                 <div
                                     class="dropdown absolute z-50 overflow-hidden w-full bg-white border border-gray-300 rounded-lg shadow-lg dark:bg-gray-700 dark:border-gray-600 mt-1 hidden">
                                 </div>
@@ -444,6 +444,3 @@
         </div>
     </div>
 </div>
-
-
-
