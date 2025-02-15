@@ -223,107 +223,107 @@
                 </div>
 
 
-                <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
-                    <div class="flex justify-between mb-4 items-start">
-                        <div class="font-medium">Pendapatan</div>
-                        <a href="/earnings" class="text-sm text-blue-600 hover:text-blue-800">Lihat Semua</a>
-                    </div>
-                    <div>
-                        @php
-                            $currentMonth = date('n');
-                            $currentYear = date('Y');
-                        @endphp
-                        <form method="GET" action="{{ route('home') }}">
-                            <div class="flex items-center space-x-4 mb-3">
-                                <select name="bulan" id="bulan" onchange="this.form.submit()"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    @foreach (range(1, 12) as $month)
-                                        <option value="{{ $month }}"
-                                            {{ (request('bulan') ?? $currentMonth) == $month ? 'selected' : '' }}>
-                                            {{ DateTime::createFromFormat('!m', $month)->format('F') }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <select name="tahun" id="tahun" onchange="this.form.submit()"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    @foreach ($yearsEarning as $year)
-                                        <option value="{{ $year }}"
-                                            {{ (request('tahun') ?? $currentYear) == $year ? 'selected' : '' }}>
-                                            {{ $year }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <button type="submit" style="display: none;">Filter</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full min-w-[460px]">
-                            <thead>
-                                <tr>
-                                    <th
-                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
-                                        Nama Project</th>
-                                    <th
-                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
-                                        Pendapatan</th>
-                                    <th
-                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">
-                                        Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if ($earnings->isEmpty())
-                                    <tr>
-                                        <td colspan="3" class="text-center py-4 font-medium text-emerald-500">Tidak ada
-                                            data</td>
-                                    </tr>
-                                @endif
-                                @foreach ($earnings as $earning)
-                                    <tr>
-                                        <td class="py-2 px-4 border-b border-b-gray-50">
-                                            <div class="flex items-center">
-                                                <a href="{{ $earning->link_project }}"
-                                                    class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">{{ $earning->name }}</a>
-                                            </div>
-                                        </td>
-                                        @php
-                                            $talent_rate = $earning->sows->sum(function ($sow) use ($earning) {
-                                                return $sow->pivot->talent_rate;
-                                            });
-                                        @endphp
-                                        <td class="py-2 px-4 border-b border-b-gray-50">
-                                            <span
-                                                class="text-[13px] font-medium text-emerald-500">{{ 'Rp' . number_format($earning->rate - $talent_rate, 2, ',', '.') }}</span>
-                                        </td>
-                                        <td class="py-2 px-4 border-b border-b-gray-50">
-                                            @if ($earning->status == 'proses')
-                                                <span
-                                                    class="inline-block p-1 rounded bg-yellow-100 text-yellow-800 font-medium text-[12px] leading-none">{{ $earning->status }}</span>
-                                            @elseif ($earning->status == 'selesai')
-                                                <span
-                                                    class="inline-block p-1 rounded bg-green-100 text-green-800 font-medium text-[12px] leading-none">{{ $earning->status }}</span>
-                                            @elseif ($earning->status == 'gagal')
-                                                <span
-                                                    class="inline-block p-1 rounded bg-red-100 text-red-800 font-medium text-[12px] leading-none">{{ $earning->status }}</span>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                <tr>
-                                    <td
-                                        class=' uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md'>
-                                        Total</td>
-                                    <td colspan="2"
-                                        class=' uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md'>
-                                        {{ 'Rp' . number_format($totalEarnings, 2, ',', '.') }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+
+            <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
+    <div class="flex justify-between mb-4 items-start">
+        <div class="font-medium">Pendapatan</div>
+        <a href="/project" class="text-sm text-blue-600 hover:text-blue-800">Lihat Semua</a>
+    </div>
+    <div>
+        @php
+            $currentMonth = date('n');
+            $currentYear = date('Y');
+        @endphp
+        <form method="GET" action="{{ route('home') }}">
+            <div class="flex items-center space-x-4 mb-3">
+                <select name="bulan" id="bulan" onchange="this.form.submit()"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    @foreach (range(1, 12) as $month)
+                        <option value="{{ $month }}"
+                            {{ (request('bulan') ?? $currentMonth) == $month ? 'selected' : '' }}>
+                            {{ DateTime::createFromFormat('!m', $month)->format('F') }}
+                        </option>
+                    @endforeach
+                </select>
+                
+                <select name="tahun" id="tahun" onchange="this.form.submit()"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    @foreach ($yearsProject as $year)
+                        <option value="{{ $year }}"
+                            {{ (request('tahun') ?? $currentYear) == $year ? 'selected' : '' }}>
+                            {{ $year }}
+                        </option>
+                    @endforeach
+                </select>
+                <button type="submit" style="display: none;">Filter</button>
             </div>
+        </form>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full min-w-[460px]">
+            <thead>
+                <tr>
+                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
+                        Nama Project</th>
+                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
+                        Pendapatan</th>
+                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">
+                        Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if ($projects->isEmpty())
+                    <tr>
+                        <td colspan="3" class="text-center py-4 font-medium text-emerald-500">Tidak ada data</td>
+                    </tr>
+                @endif
+                @foreach ($projects as $project)
+                    <tr>
+                        <td class="py-2 px-4 border-b border-b-gray-50">
+                            <div class="flex items-center">
+                                <a href="{{ $project->link_project }}"
+                                    class="text-gray-600 text-sm font-medium hover:text-blue-500 ml-2 truncate">{{ $project->name }}</a>
+                            </div>
+                        </td>
+                    @php
+                        $talent_rate = $project->rate_talent; // langsung dari kolom rate_talent
+                    @endphp
+                    <td class="py-2 px-4 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-emerald-500">
+                            {{ 'Rp' . number_format($project->rate_brand - $talent_rate, 2, ',', '.') }}
+                        </span>
+                    </td>
+                    <td class="py-2 px-4 border-b border-b-gray-50">
+                        @if ($project->status == 'ongoing')
+                            <span class="inline-block p-1 rounded bg-yellow-100 text-yellow-800 font-medium text-[12px] leading-none">
+                                {{ $project->status }}
+                            </span>
+                        @elseif ($project->status == 'completed')
+                            <span class="inline-block p-1 rounded bg-green-100 text-green-800 font-medium text-[12px] leading-none">
+                                {{ $project->status }}
+                            </span>
+                        @elseif ($project->status == 'not_completed')
+                            <span class="inline-block p-1 rounded bg-red-100 text-red-800 font-medium text-[12px] leading-none">
+                                {{ $project->status }}
+                            </span>
+                        @endif
+                        </td>
+                    </tr>
+                @endforeach
+                <tr>
+                    <td class='uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md'>
+                        Total</td>
+                    <td colspan="2"
+                        class='uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md'>
+                        {{ 'Rp' . number_format($totalProjects, 2, ',', '.') }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
 
 
 

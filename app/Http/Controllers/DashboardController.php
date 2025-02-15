@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Earning;
+// use App\Models\Earning;
+use App\Models\Project;
 use App\Models\Staff;
 use App\Models\Intern;
 use App\Models\Talent;
@@ -18,6 +19,12 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
+        $yearsProject = DB::table('projects')
+    ->selectRaw('YEAR(date) as year')
+    ->distinct()
+    ->orderBy('year', 'desc')
+    ->pluck('year');
+
         $year = $request->input('year', date('Y'));
 
         $months = range(1, 12);
@@ -83,27 +90,42 @@ class DashboardController extends Controller
         $currentYear = Carbon::now()->year;
 
         $dataSpending = Spending::all();
-        $dataEarning = Earning::all();
+        // $dataEarning = Earning::all();
+        $dataProject = Project::all();
 
         $yearsSpending = Spending::selectRaw('YEAR(date) as year')
             ->distinct()
             ->orderBy('year', 'desc')
             ->pluck('year');
 
-        $yearsEarning = Earning::selectRaw('YEAR(date) as year')
+        // $yearsEarning = Earning::selectRaw('YEAR(date) as year')
+        //     ->distinct()
+        //     ->orderBy('year', 'desc')
+        //     ->pluck('year');
+        $yearsProject = Project::selectRaw('YEAR(date) as year')
             ->distinct()
             ->orderBy('year', 'desc')
             ->pluck('year');
 
+        // $earningDataQuery = Earning::with('sows')->filter(request(['bulan', 'tahun']))->where('status', 'selesai');
+        // if ($request->has('bulan') && $request->has('tahun')) {
+        //     $earningsData = $earningDataQuery->latest()->paginate(5);
+        // } else {
+        //     $earningsData = Earning::whereMonth('date', $currentMonth)->whereYear('date', $currentYear)->where('status', 'selesai')->latest()->paginate(5);
+        // }
 
+                $projectDataQuery = Project::filter(request(['bulan', 'tahun']))
+            ->where('status', 'completed');
 
-        $earningDataQuery = Earning::with('sows')->filter(request(['bulan', 'tahun']))->where('status', 'selesai');
-        if ($request->has('bulan') && $request->has('tahun')) {
-            $earningsData = $earningDataQuery->latest()->paginate(5);
-        } else {
-            $earningsData = Earning::whereMonth('date', $currentMonth)->whereYear('date', $currentYear)->where('status', 'selesai')->latest()->paginate(5);
-        }
-
+            if ($request->has('bulan') && $request->has('tahun')) {
+                $projectsData = $projectDataQuery->latest()->paginate(5);
+            } else {
+                $projectsData = Project::whereMonth('date', $currentMonth)
+                    ->whereYear('date', $currentYear)
+                    ->where('status', 'completed')
+                    ->latest()
+                    ->paginate(5);
+            }
 
         $spendingsDataQuery = Spending::filter(request(['bulanSpending', 'tahunSpending']))->where('status', 'selesai');
         if ($request->has('bulanSpending') && $request->has('tahunSpending')) {
@@ -115,10 +137,11 @@ class DashboardController extends Controller
         $totalSpendings = $spendingsData->sum('budget');
 
 
-        $talent_rate = $earningsData->sum(function ($earning) {
-            return $earning->sows->sum('pivot.talent_rate');
-        });
-        $totalEarnings = ($earningsData->sum('rate')) - $talent_rate;
+        $talent_rate = $projectsData->sum('rate_talent'); // tidak perlu pakai sows
+
+        $totalProjects = $projectsData->sum('rate_brand') - $talent_rate;
+        
+        
 
         return view('dashboard', [
             'title' => 'Dashboard',
@@ -134,11 +157,14 @@ class DashboardController extends Controller
             // 'spendings' => Spending::latest()->paginate(5),
             // 'spendings' => Spending::where('status', 'selesai')->latest()->paginate(5),
             'selectedYear' => $year,
-            'totalEarnings' => $totalEarnings,
-            'earnings' => $earningsData,
+            // 'totalEarnings' => $totalEarnings,
+            // 'earnings' => $earningsData,
+            'projects' => $projectsData,
+            'totalProjects' => $totalProjects,
             'spendings' => $spendingsData,
             'yearsSpending' => $yearsSpending,
-            'yearsEarning' => $yearsEarning,
+            // 'yearsEarning' => $yearsEarning,
+            'yearsProject' => $yearsProject,
             'totalSpendings' => $totalSpendings,
         ]);
     }
