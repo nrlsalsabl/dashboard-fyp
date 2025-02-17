@@ -10,8 +10,8 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 class InternExport implements FromQuery, WithHeadings, WithMapping
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function query()
     {
         return Intern::query();
@@ -28,10 +28,11 @@ class InternExport implements FromQuery, WithHeadings, WithMapping
             $intern->phone,
             $intern->place,
             $intern->birth,
-            $intern->village->province->name,
+            $intern->regency->name ?? '',
             $intern->instagram,
             $intern->linkedin,
-            $intern->status ? 'Aktif' : 'Tidak Aktif'
+            $intern->status ? 'Aktif' : 'Tidak Aktif',
+            $intern->regency->province->name ?? ''
         ];
     }
 
@@ -49,7 +50,9 @@ class InternExport implements FromQuery, WithHeadings, WithMapping
             'Domisili',
             'Instagram',
             'Linkedin',
-            'Status'
+            'Status',
+            'Provinsi'
+
         ];
     }
 }

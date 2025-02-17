@@ -27,7 +27,9 @@ class Regency extends Model
      */
     protected $table = 'regencies';
 
-    protected $guarded = ['id'];
+    protected $fillable = ['id', 'province_id', 'name'];
+
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for arrays.

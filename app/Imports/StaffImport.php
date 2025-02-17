@@ -46,7 +46,11 @@ class StaffImport implements ToModel, WithStartRow
             }
 
             // Buat entri baru di database
-            $existingRegency = Regency::firstOrCreate(['name' => $finalName]);
+            $existingRegency = Regency::create([
+                'id' => Str::random(4), // Generate id secara manual
+                'name' => $finalName,
+                'province_id' => $row[12] // Pastikan Anda menyediakan nilai province_id
+            ]);
         }
 
         return new Staff([
