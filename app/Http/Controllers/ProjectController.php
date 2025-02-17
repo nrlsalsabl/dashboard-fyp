@@ -38,6 +38,7 @@ class ProjectController extends Controller
         $talents = Talent::all();
         $agency = Agency::all();
         $scopes = Scope::all();
+        $total_profit = Project::sum('rate_brand') - Project::sum('rate_talent');
 
         return view('project.main', [
             'title' => 'Project',
@@ -51,6 +52,7 @@ class ProjectController extends Controller
             'scopes' => $scopes,
             'link' => 'link',
             'status' => $status, // Mengirim status sebagai array atau objek
+            'total_profit' => $total_profit,
         ]);
     }
 

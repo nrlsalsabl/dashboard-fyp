@@ -248,6 +248,13 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr class="font-semibold text-gray-900 dark:text-white">
+                                <th scope="row" colspan="13" class="px-6 py-3 text-base text-start">Total</th>
+                                <td class="p-4 text-base text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ 'Rp' . number_format($total_profit, 2, ',', '.') }}</td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
