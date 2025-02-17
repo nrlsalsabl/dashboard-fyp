@@ -5,6 +5,7 @@ namespace App\Imports;
 use App\Models\Intern;
 use App\Models\Regency;
 use App\Models\Position;
+use App\Models\Province;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
@@ -28,9 +29,22 @@ class InternImport implements ToModel, WithStartRow
 
         // Cari atau buat provinsi (domicile)
         $inputName = $row[8]; // Input dari user (tanpa "KOTA" atau "KABUPATEN")
+        $inputProvince = $row[12]; // Input dari user (provinsi)
+
+        // Ambil id provinsi dari tabel provinces
+        $existingProvince = Province::where('name', $inputProvince)->first();
+
+        if (!$existingProvince) {
+            throw new \Exception("Province not found: " . $inputProvince);
+        }
+
+        // Hapus awalan "KOTA" atau "KABUPATEN" dari inputName jika ada
+        $cleanedInputName = preg_replace('/^(KOTA|KABUPATEN) /i', '', $inputName);
+
 
         // Cek apakah ada di database dengan atau tanpa "KOTA" atau "KABUPATEN"
-        $existingRegency = Regency::whereRaw("REPLACE(REPLACE(name, 'KOTA ', ''), 'KABUPATEN ', '') = ?", [$inputName])
+        $existingRegency = Regency::whereRaw("REPLACE(REPLACE(name, 'KOTA ', ''), 'KABUPATEN ', '') = ?", [$cleanedInputName])
+            ->where('province_id', $existingProvince->id)
             ->first();
 
         if ($existingRegency) {
@@ -39,14 +53,18 @@ class InternImport implements ToModel, WithStartRow
         } else {
             // Jika tidak ditemukan, tambahkan "KOTA" atau "KABUPATEN" secara default
             // Misalnya, default "KABUPATEN" jika nama terdiri dari lebih dari satu kata
-            if (Str::contains($inputName, [' '])) {
-                $finalName = "KABUPATEN " . $inputName;
+            if (Str::contains($cleanedInputName, [' '])) {
+                $finalName = "KABUPATEN " . $cleanedInputName;
             } else {
-                $finalName = "KOTA " . $inputName;
+                $finalName = "KOTA " . $cleanedInputName;
             }
 
             // Buat entri baru di database
-            $existingRegency = Regency::firstOrCreate(['name' => $finalName]);
+            $existingRegency = Regency::create([
+                'id' => Str::random(4), // Generate id secara manual
+                'name' => $finalName,
+                'province_id' => $existingProvince->id,
+            ]);
         }
 
         return new Intern([
