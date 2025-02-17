@@ -125,7 +125,7 @@
             </div>
 
 
-            <div class="grid grid-cols-4 gap-6 mb-6">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
                 <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-2">
                     <div class="flex justify-between mb-4 items-start">
                         <div class="font-medium">Pengeluaran</div>
