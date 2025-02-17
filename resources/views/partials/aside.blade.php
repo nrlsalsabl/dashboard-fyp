@@ -37,7 +37,7 @@
                     </svg>
                 </button>
                 <ul id="dropdown-example"
-                    class=" {{ Request::is('talent*') || Request::is('staff*') || Request::is('intern*') || Request::is('brand*') || Request::is('agency*') || Request::is('category*') || Request::is('position*') || Request::is('scope*') || Request::is('project*') ? '' : 'hidden' }} py-2 space-y-2">
+                    class=" {{ Request::is('talent*') || Request::is('staff*') || Request::is('intern*') || Request::is('brand*') || Request::is('agency*') || Request::is('category*') || Request::is('position*') || Request::is('scope*') ? '' : 'hidden' }} py-2 space-y-2">
                     <li>
                         <a href="/position"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('position') ? 'bg-gray-200' : '' }}">Posisi</a>
@@ -70,10 +70,10 @@
                         <a href="/scope"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('scope') ? 'bg-gray-200' : '' }}">Scope</a>
                     </li>
-                    <li>
+                    {{-- <li> || Request::is('project*')
                         <a href="/project"
                             class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('project') ? 'bg-gray-200' : '' }}">Project</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
             <li>
@@ -157,11 +157,23 @@
                                 d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
-                    <ul id="dropdown-earns"
+                    {{-- <ul id="dropdown-earns"
                         class="{{ Request::is('earnings*') || Request::is('spendings*') ? '' : 'hidden' }} py-2 space-y-2">
                         <li>
                             <a href="/earnings"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('earnings') ? 'bg-gray-200' : '' }}">Pendapatan</a>
+                        </li>
+                        <li>
+                            <a href="/spendings"
+                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('spendings') ? 'bg-gray-200' : '' }}">Pengeluaran</a>
+                        </li>
+                    </ul> --}}
+
+                    <ul id="dropdown-earns"
+                        class="{{ Request::is('project*') || Request::is('spendings*') ? '' : 'hidden' }} py-2 space-y-2">
+                        <li>
+                            <a href="/project"
+                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-gray-600 {{ Request::is('project') ? 'bg-gray-200' : '' }}">Pendapatan</a>
                         </li>
                         <li>
                             <a href="/spendings"
