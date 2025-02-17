@@ -20,10 +20,10 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $yearsProject = DB::table('projects')
-    ->selectRaw('YEAR(date) as year')
-    ->distinct()
-    ->orderBy('year', 'desc')
-    ->pluck('year');
+            ->selectRaw('YEAR(date) as year')
+            ->distinct()
+            ->orderBy('year', 'desc')
+            ->pluck('year');
 
         $year = $request->input('year', date('Y'));
 
@@ -102,7 +102,7 @@ class DashboardController extends Controller
         //     ->distinct()
         //     ->orderBy('year', 'desc')
         //     ->pluck('year');
-        $yearsProject = Project::selectRaw('YEAR(date) as year')
+        $yearsProject = Project::selectRaw('YEAR(tgl_pelunasan_brand) as year')
             ->distinct()
             ->orderBy('year', 'desc')
             ->pluck('year');
@@ -114,18 +114,15 @@ class DashboardController extends Controller
         //     $earningsData = Earning::whereMonth('date', $currentMonth)->whereYear('date', $currentYear)->where('status', 'selesai')->latest()->paginate(5);
         // }
 
-                $projectDataQuery = Project::filter(request(['bulan', 'tahun']))
-            ->where('status', 'completed');
+        $projectDataQuery = Project::filter(request(['bulan', 'tahun']))
+            ->where('status', 2);
 
-            if ($request->has('bulan') && $request->has('tahun')) {
-                $projectsData = $projectDataQuery->latest()->paginate(5);
-            } else {
-                $projectsData = Project::whereMonth('date', $currentMonth)
-                    ->whereYear('date', $currentYear)
-                    ->where('status', 'completed')
-                    ->latest()
-                    ->paginate(5);
-            }
+
+        if ($request->has('bulan') && $request->has('tahun')) {
+            $projectsData = $projectDataQuery->latest()->paginate(5);
+        } else {
+            $projectsData = Project::whereMonth('tgl_pelunasan_brand', $currentMonth)->whereYear('tgl_pelunasan_brand', $currentYear)->where('status', 2)->latest()->paginate(5);
+        }
 
         $spendingsDataQuery = Spending::filter(request(['bulanSpending', 'tahunSpending']))->where('status', 'selesai');
         if ($request->has('bulanSpending') && $request->has('tahunSpending')) {
@@ -140,8 +137,8 @@ class DashboardController extends Controller
         $talent_rate = $projectsData->sum('rate_talent'); // tidak perlu pakai sows
 
         $totalProjects = $projectsData->sum('rate_brand') - $talent_rate;
-        
-        
+
+
 
         return view('dashboard', [
             'title' => 'Dashboard',

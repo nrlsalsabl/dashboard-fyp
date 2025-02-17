@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 class Project extends Model
 {
     use HasFactory;
@@ -51,7 +52,7 @@ class Project extends Model
         });
 
         $query->when($filters['tahun'] ?? false, function ($query, $tahun) {
-            $query->whereYear('date', $tahun);
+            $query->whereYear('tgl_pelunasan_brand', $tahun);
         });
 
         $query->when($filters['staff'] ?? false, function ($query, $staff) {
@@ -67,4 +68,3 @@ class Project extends Model
         });
     }
 }
-
