@@ -18,22 +18,25 @@ class ProjectExport implements FromQuery, WithHeadings, WithMapping
         return Project::query();
     }
 
-    public function map($intern): array
+    public function map($project): array
     {
         return [
-            $intern->id,
-            $intern->name,
-            $intern->staff->name,
-            $intern->brand->name,
-            $intern->talent->name,
-            $intern->agency->name,
-            $intern->scope->name,
-            $intern->quantity,
-            $intern->rate_brand,
-            $intern->rate_talent,
-            $intern->tgl_pelunasan_talent,
-            $intern->tgl_pelunasan_brand,
-            $intern->Keterangan,
+            $project->id,
+            $project->date,
+            $project->name,
+            $project->staff?->name,
+            $project->brand->name,
+            $project->talent->name,
+            $project->agency->name,
+            $project->scope->name,
+            $project->quantity,
+            $project->rate_brand,
+            $project->rate_talent,
+            $project->tgl_pelunasan_talent,
+            $project->tgl_pelunasan_brand,
+            $project->Keterangan,
+            $project->status,
+            $project->link,
         ];
     }
 
@@ -41,6 +44,7 @@ class ProjectExport implements FromQuery, WithHeadings, WithMapping
     {
         return [
             'ID',
+            'Tanggal Pembuatan',
             'Nama Project',
             'PIC',
             'Brand',
@@ -53,6 +57,8 @@ class ProjectExport implements FromQuery, WithHeadings, WithMapping
             'Tanggal Pelunasan Talent',
             'Tanggal Pelunasan Brand',
             'Keterangan',
+            'Status',
+            'Link Project',
         ];
     }
 }

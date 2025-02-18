@@ -23,7 +23,7 @@ class IndicatorStaffExport implements FromQuery, WithHeadings, WithMapping
             $indicator->id,
             $indicator->staff->name,
             $indicator->staff->email,
-            $indicator->staff->position->name,
+            $indicator->staff->position?->name,
             $indicator->date,
             $indicator->target,
             $indicator->result,

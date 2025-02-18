@@ -23,7 +23,7 @@ class IndicatorInternExport implements FromQuery, WithHeadings, WithMapping
             $indicator->id,
             $indicator->intern->name,
             $indicator->intern->email,
-            $indicator->intern->position->name,
+            $indicator->intern->position?->name,
             $indicator->date,
             $indicator->target,
             $indicator->result,

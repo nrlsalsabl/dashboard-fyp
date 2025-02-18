@@ -33,8 +33,8 @@ class ProjectImport implements ToModel, WithStartRow
         $scope = Scope::firstOrCreate(['name' => $row[7]]);
         
         return new Project([
-            'name' => $row[1],
-            'date' => $row[2],
+            'name' => $row[2],
+            'date' => $row[1],
             'staff_id' => $staff->id,
             'brand_id' => $brand->id,
             'talent_id' => $talent->id,
@@ -46,6 +46,8 @@ class ProjectImport implements ToModel, WithStartRow
             'tgl_pelunasan_talent' => $row[11],
             'tgl_pelunasan_brand' => $row[12],
             'Keterangan' => $row[13],
+            'status' => $row[14],
+            'link' => $row[15],
         ]);
     }
 }
