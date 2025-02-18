@@ -17,7 +17,7 @@ class StaffController extends Controller
      */
     public function index()
     {
-        if(request('name')){
+        if (request('name')) {
             Staff::firstWhere('id', request(('name')));
         }
 
@@ -68,7 +68,7 @@ class StaffController extends Controller
 
         // NAMA STAF TIDAK BOLEH SAMA
         $staff = Staff::where('name', $validatedData['name'])->first();
-        if($staff) return redirect('/staff')->with('error', 'Staff name already exists!');
+        if ($staff) return redirect('/staff')->with('error', 'Staff name already exists!');
 
         Staff::create($validatedData);
 
@@ -104,6 +104,7 @@ class StaffController extends Controller
             'place' => 'required',
             'birth' => 'required',
             'village_id' => 'required',
+            'regency_id' => 'required',
             'address' => 'required',
             'position_id' => 'required|max:255',
             'instagram' => 'required',
@@ -111,7 +112,7 @@ class StaffController extends Controller
         ]);
 
         Staff::where('id', $staff->id)
-                ->update($validatedData);
+            ->update($validatedData);
 
         return redirect('/staff')->with('success', 'Data has been updated!');
     }
@@ -138,8 +139,8 @@ class StaffController extends Controller
         $fileName = $validatedData->getClientOriginalName();
         $validatedData->move('StaffData', $fileName);
 
-        Excel::import(new StaffImport, public_path('/StaffData/'.$fileName)); 
-        
+        Excel::import(new StaffImport, public_path('/StaffData/' . $fileName));
+
         return redirect('/staff')->with('success', 'Data has been added!');
     }
 
@@ -147,9 +148,9 @@ class StaffController extends Controller
     public function getStaffs(Request $request)
     {
         $staffs = Staff::where('name', 'like', '%' . $request->name . '%')
-                        ->select('id', 'name')
-                        ->take(5)
-                        ->get();
+            ->select('id', 'name')
+            ->take(5)
+            ->get();
 
         return response()->json($staffs);
     }
