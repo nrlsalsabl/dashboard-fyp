@@ -10,8 +10,8 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 class StaffExport implements FromQuery, WithHeadings, WithMapping
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function query()
     {
         return Staff::query();
@@ -28,10 +28,11 @@ class StaffExport implements FromQuery, WithHeadings, WithMapping
             $staff->phone,
             $staff->place,
             $staff->birth,
-            $staff->village->province->name,
+            $staff->regency->name ?? '',
             $staff->instagram,
             $staff->linkedin,
-            $staff->status ? 'Aktif' : 'Tidak Aktif'
+            $staff->status ? 'Aktif' : 'Tidak Aktif',
+            $staff->regency->province->name ?? ''
         ];
     }
 
@@ -49,7 +50,8 @@ class StaffExport implements FromQuery, WithHeadings, WithMapping
             'Domisili',
             'Instagram',
             'Linkedin',
-            'Status'
+            'Status',
+            'Provinsi'
         ];
     }
 }
