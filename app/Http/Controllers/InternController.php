@@ -104,6 +104,7 @@ class InternController extends Controller
             'place' => 'required',
             'birth' => 'required',
             'village_id' => 'required',
+            'regency_id' => 'required',
             'address' => 'required',
             'position_id' => 'required|max:255',
             'instagram' => 'required',
