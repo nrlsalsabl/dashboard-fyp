@@ -21,7 +21,7 @@ class InternController extends Controller
      */
     public function index()
     {
-        if(request('name')){
+        if (request('name')) {
             Intern::firstWhere('id', request(('name')));
         }
 
@@ -64,6 +64,7 @@ class InternController extends Controller
             'place' => 'required',
             'birth' => 'required',
             'village_id' => 'required',
+            'regency_id' => 'required',
             'address' => 'required|max:255',
             'position_id' => 'required|max:255',
             'instagram' => 'required',
@@ -111,7 +112,7 @@ class InternController extends Controller
         ]);
 
         Intern::where('id', $intern->id)
-                ->update($validatedData);
+            ->update($validatedData);
 
         return redirect('/intern')->with('success', 'Data has been updated!');
     }
@@ -139,8 +140,8 @@ class InternController extends Controller
         $fileName = $validatedData->getClientOriginalName();
         $validatedData->move('InternData', $fileName);
 
-        Excel::import(new InternImport, public_path('/InternData/'.$fileName)); 
-        
+        Excel::import(new InternImport, public_path('/InternData/' . $fileName));
+
         return redirect('/intern')->with('success', 'Data has been added!');
     }
 }
